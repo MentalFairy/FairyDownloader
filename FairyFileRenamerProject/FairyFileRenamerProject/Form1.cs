@@ -46,5 +46,17 @@ namespace FairyFileRenamerProject
             YouTubeVideo video = new YouTubeVideo(downloadLinkTextBox.Text);
             songTitlesList.Items.Add(video.title + " " + video.id);*/
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            {
+                destinationTextBox.Text = fbd.SelectedPath;
+
+            }
+        }
     }
 }
