@@ -82,7 +82,7 @@
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.Size = new System.Drawing.Size(330, 20);
             this.destinationTextBox.TabIndex = 3;
-            this.destinationTextBox.Text = "C:\\FairyDownloads";
+            this.destinationTextBox.Text = "C:\\Users\\FairyMental\\Desktop\\DownloadTest";
             // 
             // destinationLabel
             // 

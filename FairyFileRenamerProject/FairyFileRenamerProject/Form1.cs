@@ -83,48 +83,7 @@ namespace FairyFileRenamerProject
         }
 
 
-        private static void DownloadAudio(IEnumerable<VideoInfo> videoInfos)
-        {
-            /*
-             * We want the first extractable video with the highest audio quality.
-             */
-            VideoInfo video = videoInfos
-                .Where(info => info.CanExtractAudio)
-                .OrderByDescending(info => info.AudioBitrate)
-                .First();
-
-            /*
-             * If the video has a decrypted signature, decipher it
-             */
-            if (video.RequiresDecryption)
-            {
-                DownloadUrlResolver.DecryptDownloadUrl(video);
-            }
-
-            /*
-             * Create the audio downloader.
-             * The first argument is the video where the audio should be extracted from.
-             * The second argument is the path to save the audio file.
-             */
-
-            var audioDownloader = new AudioDownloader(video,
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                RemoveIllegalPathCharacters(video.Title) + video.AudioExtension));
-
-            // Register the progress events. We treat the download progress as 85% of the progress
-            // and the extraction progress only as 15% of the progress, because the download will
-            // take much longer than the audio extraction.
-            audioDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage * 0.85);
-            audioDownloader.AudioExtractionProgressChanged += (sender, args) => Console.WriteLine(85 + args.ProgressPercentage * 0.15);
-
-            /*
-             * Execute the audio downloader.
-             * For GUI applications note, that this method runs synchronously.
-             */
-            audioDownloader.Execute();
-        }
-
-        private static void DownloadVideo(IEnumerable<VideoInfo> videoInfos)
+        private void DownloadVideo(IEnumerable<VideoInfo> videoInfos)
         {
             /*
              * Select the first .mp4 video with 360p resolution
@@ -146,8 +105,7 @@ namespace FairyFileRenamerProject
              * The second argument is the path to save the video file.
              */
             var videoDownloader = new VideoDownloader(video,
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
+                Path.Combine(destinationTextBox.Text,RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
 
             // Register the ProgressChanged event and print the current progress
             videoDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage);
@@ -156,7 +114,10 @@ namespace FairyFileRenamerProject
              * Execute the video downloader.
              * For GUI applications note, that this method runs synchronously.
              */
+
             videoDownloader.Execute();
+
+           
         }
         private static string RemoveIllegalPathCharacters(string path)
         {
@@ -165,22 +126,46 @@ namespace FairyFileRenamerProject
             return r.Replace(path, "");
         }
 
+        
 
         private void downloadVideosButton_Click(object sender, EventArgs e)
         {
-            downloadStatusProgressbar.Maximum = videos.Length;
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.WorkerReportsProgress = true;
+            worker.DoWork += worker_DoWork;
+            worker.ProgressChanged += worker_ProgressChanged;
+            worker.RunWorkerAsync();
+
+
+            downloadStatusProgressbar.Maximum = 100;
             downloadStatusProgressbar.Value = 1;
             downloadStatusProgressbar.Step = 1;
+
+        }
+        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            downloadStatusProgressbar.Value = e.ProgressPercentage;
+        }
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var worker = sender as BackgroundWorker;
+            int i = 0;
+            int increment = 100 / videos.Length;
+            worker.ReportProgress(i, String.Format("Processing Iteration 1."));
             foreach (var video in videos)
             {
-                MessageBox.Show("https://www.youtube.com/watch?v=" + video.id);
-                IEnumerable <VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=" + video.id, false);
-
-                //DownloadAudio(videoInfos);
+                IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=" + video.id, false);
                 DownloadVideo(videoInfos);
-                downloadStatusProgressbar.PerformStep();
-                MessageBox.Show("WAIT");
+                worker.ReportProgress(i+=increment, String.Format("Processing Iteration {0}.", i));
+
+                
             }
+            worker.ReportProgress(100, "Done Processing.");
+        }
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

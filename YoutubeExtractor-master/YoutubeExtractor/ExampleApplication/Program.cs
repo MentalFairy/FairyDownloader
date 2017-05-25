@@ -84,7 +84,12 @@ namespace ExampleApplication
              */
             videoDownloader.Execute();
         }
-
+        private static string RemoveIllegalPathCharacters(string path)
+        {
+            string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            var r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+            return r.Replace(path, "");
+        }
         private static void Main()
         {
             // Our test youtube link
@@ -100,11 +105,6 @@ namespace ExampleApplication
             DownloadVideo(videoInfos);
         }
 
-        private static string RemoveIllegalPathCharacters(string path)
-        {
-            string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
-            var r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
-            return r.Replace(path, "");
-        }
+        
     }
 }
