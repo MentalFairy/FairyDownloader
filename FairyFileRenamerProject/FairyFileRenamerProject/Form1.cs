@@ -41,6 +41,8 @@ namespace FairyFileRenamerProject
             {
                 songTitlesList.Items.Add(video.title + " " + video.id);
             }
+            selectAllCheckbox.Checked = true;
+            CheckAllItems();
 
             /*
             YouTubeVideo video = new YouTubeVideo(downloadLinkTextBox.Text);
@@ -56,6 +58,21 @@ namespace FairyFileRenamerProject
             {
                 destinationTextBox.Text = fbd.SelectedPath;
 
+            }
+        }
+
+        private void selectAllCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckAllItems();
+        }
+        public void CheckAllItems()
+        {
+            for (int i = 0; i < songTitlesList.Items.Count; i++)
+            {
+                if (selectAllCheckbox.Checked)
+                    songTitlesList.SetItemCheckState(i, CheckState.Checked);
+                else
+                    songTitlesList.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
     }
