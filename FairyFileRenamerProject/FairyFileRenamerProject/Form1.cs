@@ -15,10 +15,11 @@ using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util.Store;
-using VideoLibrary;
 using System.Threading;
 using System.Net;
 using FairyFileRenamerProject;
+using YoutubeExtractor;
+using System.Text.RegularExpressions;
 
 namespace FairyFileRenamerProject
 {
@@ -80,22 +81,90 @@ namespace FairyFileRenamerProject
                     songTitlesList.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
-        void SaveAudioToDisk(string ID)
+
+
+        private static void DownloadAudio(IEnumerable<VideoInfo> videoInfos)
         {
-            MessageBox.Show("https://www.youtube.com/watch?v=" + ID);
-            IEnumerable<VideoInfo> videos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=" + ID);
-            
-            VideoInfo video = videos.First(p => p.VideoType == VideoType.Mp4 && p.Resolution == Convert.ToInt32(cboResolution.Text));
+            /*
+             * We want the first extractable video with the highest audio quality.
+             */
+            VideoInfo video = videoInfos
+                .Where(info => info.CanExtractAudio)
+                .OrderByDescending(info => info.AudioBitrate)
+                .First();
 
+            /*
+             * If the video has a decrypted signature, decipher it
+             */
             if (video.RequiresDecryption)
+            {
                 DownloadUrlResolver.DecryptDownloadUrl(video);
-            VideoDownloader downloader = new VideoDownloader(video, Path.Combine(Application.StartupPath + "\\", video.Title + video.VideoExtension));
+            }
 
-            Thread thread = new Thread(() => { downloader.Execute(); }) { IsBackground = true };
+            /*
+             * Create the audio downloader.
+             * The first argument is the video where the audio should be extracted from.
+             * The second argument is the path to save the audio file.
+             */
 
-            thread.Start();
-            
+            var audioDownloader = new AudioDownloader(video,
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                RemoveIllegalPathCharacters(video.Title) + video.AudioExtension));
+
+            // Register the progress events. We treat the download progress as 85% of the progress
+            // and the extraction progress only as 15% of the progress, because the download will
+            // take much longer than the audio extraction.
+            audioDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage * 0.85);
+            audioDownloader.AudioExtractionProgressChanged += (sender, args) => Console.WriteLine(85 + args.ProgressPercentage * 0.15);
+
+            /*
+             * Execute the audio downloader.
+             * For GUI applications note, that this method runs synchronously.
+             */
+            audioDownloader.Execute();
         }
+
+        private static void DownloadVideo(IEnumerable<VideoInfo> videoInfos)
+        {
+            /*
+             * Select the first .mp4 video with 360p resolution
+             */
+            VideoInfo video = videoInfos
+                .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
+
+            /*
+             * If the video has a decrypted signature, decipher it
+             */
+            if (video.RequiresDecryption)
+            {
+                DownloadUrlResolver.DecryptDownloadUrl(video);
+            }
+
+            /*
+             * Create the video downloader.
+             * The first argument is the video to download.
+             * The second argument is the path to save the video file.
+             */
+            var videoDownloader = new VideoDownloader(video,
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
+
+            // Register the ProgressChanged event and print the current progress
+            videoDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage);
+
+            /*
+             * Execute the video downloader.
+             * For GUI applications note, that this method runs synchronously.
+             */
+            videoDownloader.Execute();
+        }
+        private static string RemoveIllegalPathCharacters(string path)
+        {
+            string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            var r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+            return r.Replace(path, "");
+        }
+
 
         private void downloadVideosButton_Click(object sender, EventArgs e)
         {
@@ -104,7 +173,11 @@ namespace FairyFileRenamerProject
             downloadStatusProgressbar.Step = 1;
             foreach (var video in videos)
             {
-                SaveAudioToDisk(video.id);
+                MessageBox.Show("https://www.youtube.com/watch?v=" + video.id);
+                IEnumerable <VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=" + video.id, false);
+
+                //DownloadAudio(videoInfos);
+                DownloadVideo(videoInfos);
                 downloadStatusProgressbar.PerformStep();
                 MessageBox.Show("WAIT");
             }

@@ -13,6 +13,7 @@ namespace YoutubeExtractor
     public static class DownloadUrlResolver
     {
         private const string RateBypassFlag = "ratebypass";
+        private const int CorrectSignatureLength = 81;
         private const string SignatureQuery = "signature";
 
         /// <summary>
@@ -173,7 +174,10 @@ namespace YoutubeExtractor
         {
             string[] splitByUrls = GetStreamMap(json).Split(',');
             string[] adaptiveFmtSplitByUrls = GetAdaptiveStreamMap(json).Split(',');
-            splitByUrls = splitByUrls.Concat(adaptiveFmtSplitByUrls).ToArray();
+            if (!string.IsNullOrWhiteSpace(adaptiveFmtSplitByUrls[0]))
+            {
+                splitByUrls = splitByUrls.Concat(adaptiveFmtSplitByUrls).Distinct().ToArray();
+            }
 
             foreach (string s in splitByUrls)
             {
@@ -212,25 +216,31 @@ namespace YoutubeExtractor
 
         private static string GetAdaptiveStreamMap(JObject json)
         {
-            JToken streamMap = json["args"]["adaptive_fmts"];
-
-            // bugfix: adaptive_fmts is missing in some videos, use url_encoded_fmt_stream_map instead
-            if (streamMap == null)
+            try
             {
-              streamMap = json["args"]["url_encoded_fmt_stream_map"];
-            }
+                JToken streamMap = json["args"]["adaptive_fmts"];
 
-            return streamMap.ToString();
+                return streamMap.ToString();
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         private static string GetDecipheredSignature(string htmlPlayerVersion, string signature)
         {
+            /*if (signature.Length == CorrectSignatureLength)
+            {
+                return signature;
+            }*/
+
             return Decipherer.DecipherWithVersion(signature, htmlPlayerVersion);
         }
 
         private static string GetHtml5PlayerVersion(JObject json)
         {
-            var regex = new Regex(@"player-(.+?).js");
+            var regex = new Regex(@"html5player-(.+?)\.js");
 
             string js = json["assets"]["js"].ToString();
 
@@ -271,17 +281,9 @@ namespace YoutubeExtractor
                         Title = videoTitle,
                         RequiresDecryption = extractionInfo.RequiresDecryption
                     };
-                }
 
-                else
-                {
-                    info = new VideoInfo(formatCode)
-                    {
-                        DownloadUrl = extractionInfo.Uri.ToString()
-                    };
+                    downLoadInfos.Add(info);
                 }
-
-                downLoadInfos.Add(info);
             }
 
             return downLoadInfos;
