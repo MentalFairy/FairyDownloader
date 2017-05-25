@@ -15,15 +15,20 @@ using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util.Store;
+using VideoLibrary;
+using System.Threading;
+using System.Net;
+using FairyFileRenamerProject;
 
 namespace FairyFileRenamerProject
 {
     public partial class MainForm : Form
     {
-        
+        YouTubeVideo[] videos;
         public MainForm()
         {
             InitializeComponent();
+            cboResolution.SelectedIndex = 0;
             
         }
         private void loadSongsButton_Click(object sender, EventArgs e)
@@ -35,7 +40,7 @@ namespace FairyFileRenamerProject
                 playListID += downloadLinkTextBox.Text[index++];
             }
 
-            YouTubeVideo[] videos = YouTubeApi.GetPlayList(playListID);
+            videos = YouTubeApi.GetPlayList(playListID);
 
             foreach (var video in videos)
             {
@@ -73,6 +78,35 @@ namespace FairyFileRenamerProject
                     songTitlesList.SetItemCheckState(i, CheckState.Checked);
                 else
                     songTitlesList.SetItemCheckState(i, CheckState.Unchecked);
+            }
+        }
+        void SaveAudioToDisk(string ID)
+        {
+            MessageBox.Show("https://www.youtube.com/watch?v=" + ID);
+            IEnumerable<VideoInfo> videos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=" + ID);
+            
+            VideoInfo video = videos.First(p => p.VideoType == VideoType.Mp4 && p.Resolution == Convert.ToInt32(cboResolution.Text));
+
+            if (video.RequiresDecryption)
+                DownloadUrlResolver.DecryptDownloadUrl(video);
+            VideoDownloader downloader = new VideoDownloader(video, Path.Combine(Application.StartupPath + "\\", video.Title + video.VideoExtension));
+
+            Thread thread = new Thread(() => { downloader.Execute(); }) { IsBackground = true };
+
+            thread.Start();
+            
+        }
+
+        private void downloadVideosButton_Click(object sender, EventArgs e)
+        {
+            downloadStatusProgressbar.Maximum = videos.Length;
+            downloadStatusProgressbar.Value = 1;
+            downloadStatusProgressbar.Step = 1;
+            foreach (var video in videos)
+            {
+                SaveAudioToDisk(video.id);
+                downloadStatusProgressbar.PerformStep();
+                MessageBox.Show("WAIT");
             }
         }
     }

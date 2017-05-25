@@ -42,6 +42,10 @@
             this.pathSelectorButton = new System.Windows.Forms.Button();
             this.songTitlesList = new System.Windows.Forms.CheckedListBox();
             this.selectAllCheckbox = new System.Windows.Forms.CheckBox();
+            this.downloadVideosButton = new System.Windows.Forms.Button();
+            this.downloadStatusProgressbar = new System.Windows.Forms.ProgressBar();
+            this.downloadStatusLabel = new System.Windows.Forms.Label();
+            this.cboResolution = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // downloadLinkTextBox
@@ -166,11 +170,53 @@
             this.selectAllCheckbox.UseVisualStyleBackColor = true;
             this.selectAllCheckbox.CheckedChanged += new System.EventHandler(this.selectAllCheckbox_CheckedChanged);
             // 
+            // downloadVideosButton
+            // 
+            this.downloadVideosButton.Location = new System.Drawing.Point(15, 393);
+            this.downloadVideosButton.Name = "downloadVideosButton";
+            this.downloadVideosButton.Size = new System.Drawing.Size(457, 23);
+            this.downloadVideosButton.TabIndex = 17;
+            this.downloadVideosButton.Text = "Download Videos";
+            this.downloadVideosButton.UseVisualStyleBackColor = true;
+            this.downloadVideosButton.Click += new System.EventHandler(this.downloadVideosButton_Click);
+            // 
+            // downloadStatusProgressbar
+            // 
+            this.downloadStatusProgressbar.Location = new System.Drawing.Point(15, 450);
+            this.downloadStatusProgressbar.Name = "downloadStatusProgressbar";
+            this.downloadStatusProgressbar.Size = new System.Drawing.Size(457, 23);
+            this.downloadStatusProgressbar.TabIndex = 18;
+            // 
+            // downloadStatusLabel
+            // 
+            this.downloadStatusLabel.AutoSize = true;
+            this.downloadStatusLabel.Location = new System.Drawing.Point(12, 434);
+            this.downloadStatusLabel.Name = "downloadStatusLabel";
+            this.downloadStatusLabel.Size = new System.Drawing.Size(94, 13);
+            this.downloadStatusLabel.TabIndex = 19;
+            this.downloadStatusLabel.Text = "Download Status: ";
+            // 
+            // cboResolution
+            // 
+            this.cboResolution.FormattingEnabled = true;
+            this.cboResolution.Items.AddRange(new object[] {
+            "360",
+            "480",
+            "720"});
+            this.cboResolution.Location = new System.Drawing.Point(351, 479);
+            this.cboResolution.Name = "cboResolution";
+            this.cboResolution.Size = new System.Drawing.Size(121, 21);
+            this.cboResolution.TabIndex = 20;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 582);
+            this.Controls.Add(this.cboResolution);
+            this.Controls.Add(this.downloadStatusLabel);
+            this.Controls.Add(this.downloadStatusProgressbar);
+            this.Controls.Add(this.downloadVideosButton);
             this.Controls.Add(this.selectAllCheckbox);
             this.Controls.Add(this.songTitlesList);
             this.Controls.Add(this.pathSelectorButton);
@@ -207,6 +253,10 @@
         private System.Windows.Forms.Button pathSelectorButton;
         private System.Windows.Forms.CheckedListBox songTitlesList;
         private System.Windows.Forms.CheckBox selectAllCheckbox;
+        private System.Windows.Forms.Button downloadVideosButton;
+        private System.Windows.Forms.ProgressBar downloadStatusProgressbar;
+        private System.Windows.Forms.Label downloadStatusLabel;
+        private System.Windows.Forms.ComboBox cboResolution;
     }
 }
 
