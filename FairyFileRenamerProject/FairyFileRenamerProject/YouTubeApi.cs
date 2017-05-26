@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Apis.Discovery.v1;
 using Google.Apis.Discovery.v1.Data;
@@ -14,7 +13,6 @@ using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util.Store;
-using System.IO;
 using System.Threading;
 
 namespace FairyFileRenamerProject
