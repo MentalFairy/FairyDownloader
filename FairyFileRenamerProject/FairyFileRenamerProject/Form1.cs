@@ -20,7 +20,7 @@ using System.Net;
 using FairyFileRenamerProject;
 using YoutubeExtractor;
 using System.Text.RegularExpressions;
-
+using System.Collections;
 namespace FairyFileRenamerProject
 {
     public partial class MainForm : Form
@@ -77,77 +77,69 @@ namespace FairyFileRenamerProject
                     songTitlesList.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
-
-
-        private void DownloadVideo(IEnumerable<VideoInfo> videoInfos)
-        {
-           
-            VideoInfo video = videoInfos
-                .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
-
-
-            if (video.RequiresDecryption)
-            {
-                DownloadUrlResolver.DecryptDownloadUrl(video);
-            }
-
-
-            var videoDownloader = new VideoDownloader(video,
-                Path.Combine(destinationTextBox.Text,RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
-
-            videoDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage);
-
-
-            videoDownloader.Execute();
-           
-        }
-        private static string RemoveIllegalPathCharacters(string path)
-        {
-            string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
-            var r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
-            return r.Replace(path, "");
-        }
-
-        
-
+    
         private void downloadVideosButton_Click(object sender, EventArgs e)
         {
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChanged;
-            worker.RunWorkerAsync();
-
-
-            downloadStatusProgressbar.Maximum = 100;
+            
+            downloadStatusProgressbar.Maximum = videos.Length;
             downloadStatusProgressbar.Value = 1;
             downloadStatusProgressbar.Step = 1;
 
-        }
-        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            downloadStatusProgressbar.Value = e.ProgressPercentage;
-        }
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            var worker = sender as BackgroundWorker;
-            int i = 0;
-            int increment = 100 / videos.Length;
-            worker.ReportProgress(i, String.Format("Processing Iteration 1."));
-            foreach (var video in videos)
-            {
-                IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=" + video.id, false);
-                DownloadVideo(videoInfos);
-                worker.ReportProgress(i+=increment, String.Format("Processing Iteration {0}.", i));
+            BackgroundWorker dlManager = new BackgroundWorker();
+            dlManager.RunWorkerCompleted += dlManager_RunWorkerCompleted;
+            dlManager.DoWork += dlManager_DoWork;
+            dlManager.RunWorkerAsync();
 
-                
-            }
-            worker.ReportProgress(100, "Done Processing.");
+         
+         
         }
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void dlManager_DoWork(object sender, DoWorkEventArgs e)
         {
-            throw new NotImplementedException();
+            List<BackgroundDownloader> bkgdls = new List<BackgroundDownloader>();
+            List<YouTubeVideo> checkedVideos = new List<YouTubeVideo>();
+            for (int k = 0; k < songTitlesList.Items.Count; k++)
+            {
+                if(songTitlesList.GetItemCheckState(k) == CheckState.Checked)
+                    checkedVideos.Add(videos[k]);
+            }
+
+            int maxDownloads = 3;
+            int currentDownloads = 0;
+            int i = 0;
+            while(i < checkedVideos.Count)
+            {
+                if (currentDownloads < maxDownloads)
+                {
+                    bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[i].id, downloadStatusProgressbar));
+                    currentDownloads++;
+                }
+                else
+                {
+                    i--;
+                    int j = 0;
+                    int deletePos = -1;
+                    foreach (var bkgdownloader in bkgdls)
+                    {   
+                        if (bkgdownloader.finished == true)
+                        {
+                            deletePos = j;
+                            currentDownloads--;
+                            break;
+                        }
+                        j++;
+                    }
+                    if(deletePos != -1)
+                        bkgdls.RemoveAt(deletePos);
+                }
+                i++;
+
+            }
+            MessageBox.Show("Done downloading");
         }
+        private void dlManager_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //
+        }
+       
     }
 }
