@@ -26,10 +26,13 @@ namespace FairyFileRenamerProject
     public partial class MainForm : Form
     {
         YouTubeVideo[] videos;
+        List<string> mp4Files;
+
         public MainForm()
         {
             InitializeComponent();
             cboResolution.SelectedIndex = 0;
+            mp4Files = new List<string>();
             
         }
         private void loadSongsButton_Click(object sender, EventArgs e)
@@ -128,17 +131,24 @@ namespace FairyFileRenamerProject
                         }
                         j++;
                     }
-                    if(deletePos != -1)
+                    if (deletePos != -1)
+                    {
+                        mp4Files.Add(bkgdls[deletePos].filePath);
                         bkgdls.RemoveAt(deletePos);
+                    }
                 }
                 i++;
 
             }
-            MessageBox.Show("Done downloading");
+            MessageBox.Show("Wait");
+
+            Mp4ToMp3Converter converter = new Mp4ToMp3Converter(@"C:\Users\FairyMental\Desktop\DownloadTest\01. BAZOOKA - Trotineta cu Trei Roţi (Prod. ECHO).mp4");
+
+
         }
         private void dlManager_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //
+            
         }
        
     }

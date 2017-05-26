@@ -19,6 +19,8 @@ namespace FairyFileRenamerProject
         string destionationPath;
         string videoLink;
 
+        public string filePath = "";
+
         public bool finished = false;
 
         ProgressBar progressBar;
@@ -69,6 +71,7 @@ namespace FairyFileRenamerProject
                 }
 
                 var videoDownloader = new VideoDownloader(video, Path.Combine(destionationPath, RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
+                filePath = Path.Combine(destionationPath, RemoveIllegalPathCharacters(video.Title) + video.VideoExtension);
                 videoDownloader.DownloadProgressChanged += (sender, args) => worker.ReportProgress((int)(args.ProgressPercentage));
                 videoDownloader.Execute();
             }

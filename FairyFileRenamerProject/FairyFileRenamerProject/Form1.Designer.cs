@@ -46,6 +46,7 @@
             this.downloadStatusProgressbar = new System.Windows.Forms.ProgressBar();
             this.downloadStatusLabel = new System.Windows.Forms.Label();
             this.cboResolution = new System.Windows.Forms.ComboBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // downloadLinkTextBox
@@ -153,6 +154,7 @@
             // 
             // songTitlesList
             // 
+            this.songTitlesList.CheckOnClick = true;
             this.songTitlesList.FormattingEnabled = true;
             this.songTitlesList.Location = new System.Drawing.Point(15, 142);
             this.songTitlesList.Name = "songTitlesList";
@@ -208,11 +210,22 @@
             this.cboResolution.Size = new System.Drawing.Size(121, 21);
             this.cboResolution.TabIndex = 20;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(10, 575);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(165, 17);
+            this.checkBox2.TabIndex = 21;
+            this.checkBox2.Text = "Don\'t download whole playlist";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 582);
+            this.ClientSize = new System.Drawing.Size(484, 604);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.cboResolution);
             this.Controls.Add(this.downloadStatusLabel);
             this.Controls.Add(this.downloadStatusProgressbar);
@@ -257,6 +270,7 @@
         private System.Windows.Forms.ProgressBar downloadStatusProgressbar;
         private System.Windows.Forms.Label downloadStatusLabel;
         private System.Windows.Forms.ComboBox cboResolution;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
