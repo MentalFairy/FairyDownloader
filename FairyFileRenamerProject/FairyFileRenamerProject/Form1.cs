@@ -49,10 +49,6 @@ namespace FairyFileRenamerProject
             }
             selectAllCheckbox.Checked = true;
             CheckAllItems();
-
-            /*
-            YouTubeVideo video = new YouTubeVideo(downloadLinkTextBox.Text);
-            songTitlesList.Items.Add(video.title + " " + video.id);*/
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -85,38 +81,24 @@ namespace FairyFileRenamerProject
 
         private void DownloadVideo(IEnumerable<VideoInfo> videoInfos)
         {
-            /*
-             * Select the first .mp4 video with 360p resolution
-             */
+           
             VideoInfo video = videoInfos
                 .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
 
-            /*
-             * If the video has a decrypted signature, decipher it
-             */
+
             if (video.RequiresDecryption)
             {
                 DownloadUrlResolver.DecryptDownloadUrl(video);
             }
 
-            /*
-             * Create the video downloader.
-             * The first argument is the video to download.
-             * The second argument is the path to save the video file.
-             */
+
             var videoDownloader = new VideoDownloader(video,
                 Path.Combine(destinationTextBox.Text,RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
 
-            // Register the ProgressChanged event and print the current progress
             videoDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage);
 
-            /*
-             * Execute the video downloader.
-             * For GUI applications note, that this method runs synchronously.
-             */
 
             videoDownloader.Execute();
-
            
         }
         private static string RemoveIllegalPathCharacters(string path)
