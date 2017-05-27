@@ -126,7 +126,7 @@ namespace FairyFileRenamerProject
             //Mp4ToMp3Converter converter = new Mp4ToMp3Converter(@"C:\Users\FairyMental\Desktop\DownloadTest\01. BAZOOKA - Trotineta cu Trei Roţi (Prod. ECHO).mp4");
             while(bkgdls.Count != 0)
             {
-                //
+                Task.Delay(250);
             }
 
         }
@@ -150,6 +150,7 @@ namespace FairyFileRenamerProject
                     
                     break;
                 }
+
             }
         }
         private void dlManager_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
