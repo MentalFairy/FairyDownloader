@@ -98,8 +98,6 @@ namespace FairyFileRenamerProject
             dlManager.ProgressChanged += dlManager_WorkerProgressChanged;
 
             dlManager.RunWorkerAsync();
-
-         
          
         }
         private void dlManager_DoWork(object sender, DoWorkEventArgs e)

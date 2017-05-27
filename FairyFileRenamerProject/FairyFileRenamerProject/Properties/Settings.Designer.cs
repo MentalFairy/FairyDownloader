@@ -22,5 +22,77 @@ namespace FairyFileRenamerProject.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string destinationPath {
+            get {
+                return ((string)(this["destinationPath"]));
+            }
+            set {
+                this["destinationPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkboxSelectAll {
+            get {
+                return ((bool)(this["checkboxSelectAll"]));
+            }
+            set {
+                this["checkboxSelectAll"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkboxDoNotRename {
+            get {
+                return ((bool)(this["checkboxDoNotRename"]));
+            }
+            set {
+                this["checkboxDoNotRename"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkboxDoNotDeleteVideo {
+            get {
+                return ((bool)(this["checkboxDoNotDeleteVideo"]));
+            }
+            set {
+                this["checkboxDoNotDeleteVideo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkboxDoNotConvert {
+            get {
+                return ((bool)(this["checkboxDoNotConvert"]));
+            }
+            set {
+                this["checkboxDoNotConvert"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int downloadResolution {
+            get {
+                return ((int)(this["downloadResolution"]));
+            }
+            set {
+                this["downloadResolution"] = value;
+            }
+        }
     }
 }

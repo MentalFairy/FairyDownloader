@@ -47,14 +47,20 @@
             this.downloadStatusLabel = new System.Windows.Forms.Label();
             this.cboResolution = new System.Windows.Forms.ComboBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // downloadLinkTextBox
             // 
             this.downloadLinkTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.downloadLinkTextBox.Location = new System.Drawing.Point(101, 38);
+            this.downloadLinkTextBox.Location = new System.Drawing.Point(110, 8);
             this.downloadLinkTextBox.Name = "downloadLinkTextBox";
-            this.downloadLinkTextBox.Size = new System.Drawing.Size(371, 20);
+            this.downloadLinkTextBox.Size = new System.Drawing.Size(346, 20);
             this.downloadLinkTextBox.TabIndex = 0;
             // 
             // titleLabel
@@ -71,7 +77,7 @@
             // downloadLinkLabel
             // 
             this.downloadLinkLabel.AutoSize = true;
-            this.downloadLinkLabel.Location = new System.Drawing.Point(12, 41);
+            this.downloadLinkLabel.Location = new System.Drawing.Point(8, 11);
             this.downloadLinkLabel.Name = "downloadLinkLabel";
             this.downloadLinkLabel.Size = new System.Drawing.Size(81, 13);
             this.downloadLinkLabel.TabIndex = 2;
@@ -79,16 +85,16 @@
             // 
             // destinationTextBox
             // 
-            this.destinationTextBox.Location = new System.Drawing.Point(101, 64);
+            this.destinationTextBox.Location = new System.Drawing.Point(106, 39);
             this.destinationTextBox.Name = "destinationTextBox";
-            this.destinationTextBox.Size = new System.Drawing.Size(330, 20);
+            this.destinationTextBox.Size = new System.Drawing.Size(309, 20);
             this.destinationTextBox.TabIndex = 3;
             this.destinationTextBox.Text = "C:\\Users\\FairyMental\\Desktop\\DownloadTest";
             // 
             // destinationLabel
             // 
             this.destinationLabel.AutoSize = true;
-            this.destinationLabel.Location = new System.Drawing.Point(7, 67);
+            this.destinationLabel.Location = new System.Drawing.Point(8, 46);
             this.destinationLabel.Name = "destinationLabel";
             this.destinationLabel.Size = new System.Drawing.Size(88, 13);
             this.destinationLabel.TabIndex = 4;
@@ -97,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 125);
+            this.label1.Location = new System.Drawing.Point(8, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 7;
@@ -106,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 504);
+            this.label3.Location = new System.Drawing.Point(3, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 9;
@@ -115,7 +121,7 @@
             // dontRenameCheckbox
             // 
             this.dontRenameCheckbox.AutoSize = true;
-            this.dontRenameCheckbox.Location = new System.Drawing.Point(10, 530);
+            this.dontRenameCheckbox.Location = new System.Drawing.Point(6, 26);
             this.dontRenameCheckbox.Name = "dontRenameCheckbox";
             this.dontRenameCheckbox.Size = new System.Drawing.Size(94, 17);
             this.dontRenameCheckbox.TabIndex = 11;
@@ -125,18 +131,18 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(10, 553);
+            this.checkBox1.Location = new System.Drawing.Point(6, 49);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(165, 17);
+            this.checkBox1.Size = new System.Drawing.Size(139, 17);
             this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Don\'t download whole playlist";
+            this.checkBox1.Text = "Don\'t Delete Video Files";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // loadSongsButton
             // 
-            this.loadSongsButton.Location = new System.Drawing.Point(10, 90);
+            this.loadSongsButton.Location = new System.Drawing.Point(8, 67);
             this.loadSongsButton.Name = "loadSongsButton";
-            this.loadSongsButton.Size = new System.Drawing.Size(462, 23);
+            this.loadSongsButton.Size = new System.Drawing.Size(448, 23);
             this.loadSongsButton.TabIndex = 13;
             this.loadSongsButton.Text = "Load Link and Display Song Titles";
             this.loadSongsButton.UseVisualStyleBackColor = true;
@@ -144,7 +150,7 @@
             // 
             // pathSelectorButton
             // 
-            this.pathSelectorButton.Location = new System.Drawing.Point(437, 62);
+            this.pathSelectorButton.Location = new System.Drawing.Point(421, 39);
             this.pathSelectorButton.Name = "pathSelectorButton";
             this.pathSelectorButton.Size = new System.Drawing.Size(35, 22);
             this.pathSelectorButton.TabIndex = 14;
@@ -156,15 +162,15 @@
             // 
             this.songTitlesList.CheckOnClick = true;
             this.songTitlesList.FormattingEnabled = true;
-            this.songTitlesList.Location = new System.Drawing.Point(15, 142);
+            this.songTitlesList.Location = new System.Drawing.Point(8, 122);
             this.songTitlesList.Name = "songTitlesList";
-            this.songTitlesList.Size = new System.Drawing.Size(457, 244);
+            this.songTitlesList.Size = new System.Drawing.Size(448, 154);
             this.songTitlesList.TabIndex = 15;
             // 
             // selectAllCheckbox
             // 
             this.selectAllCheckbox.AutoSize = true;
-            this.selectAllCheckbox.Location = new System.Drawing.Point(402, 125);
+            this.selectAllCheckbox.Location = new System.Drawing.Point(381, 99);
             this.selectAllCheckbox.Name = "selectAllCheckbox";
             this.selectAllCheckbox.Size = new System.Drawing.Size(70, 17);
             this.selectAllCheckbox.TabIndex = 16;
@@ -174,9 +180,9 @@
             // 
             // downloadVideosButton
             // 
-            this.downloadVideosButton.Location = new System.Drawing.Point(15, 393);
+            this.downloadVideosButton.Location = new System.Drawing.Point(8, 282);
             this.downloadVideosButton.Name = "downloadVideosButton";
-            this.downloadVideosButton.Size = new System.Drawing.Size(457, 23);
+            this.downloadVideosButton.Size = new System.Drawing.Size(448, 23);
             this.downloadVideosButton.TabIndex = 17;
             this.downloadVideosButton.Text = "Download Videos";
             this.downloadVideosButton.UseVisualStyleBackColor = true;
@@ -184,15 +190,15 @@
             // 
             // downloadStatusProgressbar
             // 
-            this.downloadStatusProgressbar.Location = new System.Drawing.Point(15, 450);
+            this.downloadStatusProgressbar.Location = new System.Drawing.Point(5, 359);
             this.downloadStatusProgressbar.Name = "downloadStatusProgressbar";
-            this.downloadStatusProgressbar.Size = new System.Drawing.Size(457, 23);
+            this.downloadStatusProgressbar.Size = new System.Drawing.Size(448, 15);
             this.downloadStatusProgressbar.TabIndex = 18;
             // 
             // downloadStatusLabel
             // 
             this.downloadStatusLabel.AutoSize = true;
-            this.downloadStatusLabel.Location = new System.Drawing.Point(12, 434);
+            this.downloadStatusLabel.Location = new System.Drawing.Point(5, 343);
             this.downloadStatusLabel.Name = "downloadStatusLabel";
             this.downloadStatusLabel.Size = new System.Drawing.Size(94, 13);
             this.downloadStatusLabel.TabIndex = 19;
@@ -205,46 +211,84 @@
             "360",
             "480",
             "720"});
-            this.cboResolution.Location = new System.Drawing.Point(351, 479);
+            this.cboResolution.Location = new System.Drawing.Point(386, 311);
             this.cboResolution.Name = "cboResolution";
-            this.cboResolution.Size = new System.Drawing.Size(121, 21);
+            this.cboResolution.Size = new System.Drawing.Size(70, 21);
             this.cboResolution.TabIndex = 20;
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(10, 575);
+            this.checkBox2.Location = new System.Drawing.Point(6, 72);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(165, 17);
+            this.checkBox2.Size = new System.Drawing.Size(126, 17);
             this.checkBox2.TabIndex = 21;
-            this.checkBox2.Text = "Don\'t download whole playlist";
+            this.checkBox2.Text = "Don\'t Convert to mp3";
             this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.dontRenameCheckbox);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Location = new System.Drawing.Point(11, 419);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 22;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.progressBar1);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.downloadLinkTextBox);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.downloadLinkLabel);
+            this.panel2.Controls.Add(this.downloadStatusLabel);
+            this.panel2.Controls.Add(this.cboResolution);
+            this.panel2.Controls.Add(this.downloadStatusProgressbar);
+            this.panel2.Controls.Add(this.destinationTextBox);
+            this.panel2.Controls.Add(this.pathSelectorButton);
+            this.panel2.Controls.Add(this.destinationLabel);
+            this.panel2.Controls.Add(this.downloadVideosButton);
+            this.panel2.Controls.Add(this.loadSongsButton);
+            this.panel2.Controls.Add(this.songTitlesList);
+            this.panel2.Controls.Add(this.selectAllCheckbox);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(7, 38);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(470, 522);
+            this.panel2.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 377);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Conversion Status:";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(5, 393);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(448, 15);
+            this.progressBar1.TabIndex = 24;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 604);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.cboResolution);
-            this.Controls.Add(this.downloadStatusLabel);
-            this.Controls.Add(this.downloadStatusProgressbar);
-            this.Controls.Add(this.downloadVideosButton);
-            this.Controls.Add(this.selectAllCheckbox);
-            this.Controls.Add(this.songTitlesList);
-            this.Controls.Add(this.pathSelectorButton);
-            this.Controls.Add(this.loadSongsButton);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.dontRenameCheckbox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.destinationLabel);
-            this.Controls.Add(this.destinationTextBox);
-            this.Controls.Add(this.downloadLinkLabel);
+            this.ClientSize = new System.Drawing.Size(484, 565);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.downloadLinkTextBox);
             this.Name = "MainForm";
             this.Text = "Fairy Downloader";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,6 +315,10 @@
         private System.Windows.Forms.Label downloadStatusLabel;
         private System.Windows.Forms.ComboBox cboResolution;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
