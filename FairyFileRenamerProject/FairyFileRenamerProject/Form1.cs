@@ -26,10 +26,16 @@ namespace FairyFileRenamerProject
     public partial class MainForm : Form
     {
         YouTubeVideo[] videos;
+        List<string> mp4Files;
+        BackgroundWorker dlManager;
+        List<BackgroundDownloader> bkgdls;
+        List<YouTubeVideo> checkedVideos;
+        int nextDownload = 0;
         public MainForm()
         {
             InitializeComponent();
             cboResolution.SelectedIndex = 0;
+            mp4Files = new List<string>();
             
         }
         private void loadSongsButton_Click(object sender, EventArgs e)
@@ -85,9 +91,12 @@ namespace FairyFileRenamerProject
             downloadStatusProgressbar.Value = 1;
             downloadStatusProgressbar.Step = 1;
 
-            BackgroundWorker dlManager = new BackgroundWorker();
+            dlManager = new BackgroundWorker();
             dlManager.RunWorkerCompleted += dlManager_RunWorkerCompleted;
             dlManager.DoWork += dlManager_DoWork;
+            dlManager.WorkerReportsProgress = true;
+            dlManager.ProgressChanged += dlManager_WorkerProgressChanged;
+
             dlManager.RunWorkerAsync();
 
          
@@ -95,8 +104,8 @@ namespace FairyFileRenamerProject
         }
         private void dlManager_DoWork(object sender, DoWorkEventArgs e)
         {
-            List<BackgroundDownloader> bkgdls = new List<BackgroundDownloader>();
-            List<YouTubeVideo> checkedVideos = new List<YouTubeVideo>();
+            bkgdls = new List<BackgroundDownloader>();
+            checkedVideos = new List<YouTubeVideo>();
             for (int k = 0; k < songTitlesList.Items.Count; k++)
             {
                 if(songTitlesList.GetItemCheckState(k) == CheckState.Checked)
@@ -104,41 +113,49 @@ namespace FairyFileRenamerProject
             }
 
             int maxDownloads = 3;
-            int currentDownloads = 0;
-            int i = 0;
-            while(i < checkedVideos.Count)
+            for (nextDownload = 0; nextDownload < maxDownloads; nextDownload++) 
             {
-                if (currentDownloads < maxDownloads)
-                {
-                    bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[i].id, downloadStatusProgressbar));
-                    currentDownloads++;
-                }
+                if (nextDownload >= checkedVideos.Count)
+                    break;
                 else
+                    bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload].id, downloadStatusProgressbar,dlManager));
+            }
+
+            //MessageBox.Show("Wait");
+
+            //Mp4ToMp3Converter converter = new Mp4ToMp3Converter(@"C:\Users\FairyMental\Desktop\DownloadTest\01. BAZOOKA - Trotineta cu Trei Roţi (Prod. ECHO).mp4");
+            while(bkgdls.Count != 0)
+            {
+                Task.Delay(250);
+            }
+
+        }
+        private void dlManager_WorkerProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+            mp4Files.Add(e.UserState.ToString());
+           
+            Mp4ToMp3Converter converter = new Mp4ToMp3Converter(e.UserState.ToString());
+            for (int i = 0; i < bkgdls.Count; i++)
+            {
+                if (bkgdls[i].filePath == mp4Files[mp4Files.Count - 1])
                 {
-                    i--;
-                    int j = 0;
-                    int deletePos = -1;
-                    foreach (var bkgdownloader in bkgdls)
-                    {   
-                        if (bkgdownloader.finished == true)
-                        {
-                            deletePos = j;
-                            currentDownloads--;
-                            break;
-                        }
-                        j++;
+                    bkgdls.RemoveAt(i);
+                    if (nextDownload >= checkedVideos.Count)
+                        break;
+                    else
+                    {
+                        bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload++].id, downloadStatusProgressbar, dlManager));
                     }
-                    if(deletePos != -1)
-                        bkgdls.RemoveAt(deletePos);
+                    
+                    break;
                 }
-                i++;
 
             }
-            MessageBox.Show("Done downloading");
         }
         private void dlManager_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //
+            
         }
        
     }

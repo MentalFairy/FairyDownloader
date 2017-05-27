@@ -14,10 +14,13 @@ namespace FairyFileRenamerProject
     class BackgroundDownloader
     {
         BackgroundWorker worker = new BackgroundWorker();
+        BackgroundWorker bkgdls;
 
         IEnumerable<VideoInfo> videoInfos;
         string destionationPath;
         string videoLink;
+
+        public string filePath = "";
 
         public bool finished = false;
 
@@ -25,13 +28,14 @@ namespace FairyFileRenamerProject
         double progress = 0;
 
 
-        public BackgroundDownloader(string _Path, string _videoURL, ProgressBar _progressBar)
+        public BackgroundDownloader( string _Path, string _videoURL, ProgressBar _progressBar, BackgroundWorker _bkgdls)
         {
             destionationPath = _Path;
             videoLink = _videoURL;
             progressBar = _progressBar;
             finished = false;
 
+            bkgdls = _bkgdls;
 
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             worker.WorkerReportsProgress = true;
@@ -43,8 +47,7 @@ namespace FairyFileRenamerProject
         
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            finished = true;
-            //progressBar.PerformStep();
+            bkgdls.ReportProgress(0, filePath);
         }
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -69,6 +72,7 @@ namespace FairyFileRenamerProject
                 }
 
                 var videoDownloader = new VideoDownloader(video, Path.Combine(destionationPath, RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
+                filePath = Path.Combine(destionationPath, RemoveIllegalPathCharacters(video.Title) + video.VideoExtension);
                 videoDownloader.DownloadProgressChanged += (sender, args) => worker.ReportProgress((int)(args.ProgressPercentage));
                 videoDownloader.Execute();
             }
