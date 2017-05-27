@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace FairyFileRenamerProject
 
             pathToffmpeg = Environment.CurrentDirectory +"\\ffmpeg.exe";
 
-            MessageBox.Show(inputFile + "\n" + outputFile + "\n" + pathToffmpeg);
+         //   MessageBox.Show(inputFile + "\n" + outputFile + "\n" + pathToffmpeg);
 
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             worker.DoWork += worker_DoWork;
@@ -40,9 +41,9 @@ namespace FairyFileRenamerProject
         {
 
             FFMPEG ffmpeg = new FFMPEG(pathToffmpeg);
-
             string result2 = ffmpeg.RunCommand("-i \"" + inputFile + "\" -vn -f mp3 -ab 192k \"" + outputFile + "\"");
-            
+
+            File.Delete(inputFile);
             
         }
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
