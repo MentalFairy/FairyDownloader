@@ -36,6 +36,12 @@ namespace FairyFileRenamerProject
             InitializeComponent();
             cboResolution.SelectedIndex = 0;
             mp4Files = new List<string>();
+
+            dontRenameCheckbox.Checked = Properties.Settings.Default.checkboxDoNotRename;
+            dontDeleteVideoCheckbox.Checked = Properties.Settings.Default.checkboxDoNotDeleteVideo;
+            dontConvertCheckbox.Checked = Properties.Settings.Default.checkboxDoNotConvert;
+
+            destinationTextBox.Text = Properties.Settings.Default.destinationPath;
             
         }
         private void loadSongsButton_Click(object sender, EventArgs e)
@@ -119,8 +125,6 @@ namespace FairyFileRenamerProject
                     bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload].id, downloadStatusProgressbar,dlManager));
             }
 
-            //MessageBox.Show("Wait");
-
             //Mp4ToMp3Converter converter = new Mp4ToMp3Converter(@"C:\Users\FairyMental\Desktop\DownloadTest\01. BAZOOKA - Trotineta cu Trei Roţi (Prod. ECHO).mp4");
             while(bkgdls.Count != 0)
             {
@@ -155,6 +159,27 @@ namespace FairyFileRenamerProject
         {
             
         }
-       
+
+        private void dontRenameCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.checkboxDoNotRename = dontRenameCheckbox.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void dontDeleteVideoCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.checkboxDoNotDeleteVideo = dontDeleteVideoCheckbox.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void dontConvertCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.checkboxDoNotConvert = dontConvertCheckbox.Checked;
+            Properties.Settings.Default.Save();
+        }
+        private void saveSettings()
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }

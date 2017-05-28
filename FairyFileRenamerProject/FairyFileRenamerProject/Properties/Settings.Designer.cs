@@ -25,7 +25,6 @@ namespace FairyFileRenamerProject.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string destinationPath {
             get {
                 return ((string)(this["destinationPath"]));
@@ -37,7 +36,6 @@ namespace FairyFileRenamerProject.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool checkboxSelectAll {
             get {
                 return ((bool)(this["checkboxSelectAll"]));
@@ -61,7 +59,6 @@ namespace FairyFileRenamerProject.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool checkboxDoNotDeleteVideo {
             get {
                 return ((bool)(this["checkboxDoNotDeleteVideo"]));
@@ -73,7 +70,6 @@ namespace FairyFileRenamerProject.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool checkboxDoNotConvert {
             get {
                 return ((bool)(this["checkboxDoNotConvert"]));

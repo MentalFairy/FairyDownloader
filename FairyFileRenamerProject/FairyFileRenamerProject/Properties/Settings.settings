@@ -2,19 +2,19 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FairyFileRenamerProject.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="destinationPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="destinationPath" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\FairyMental\Desktop\DownloadTest</Value>
     </Setting>
-    <Setting Name="checkboxSelectAll" Type="System.Boolean" Scope="User">
+    <Setting Name="checkboxSelectAll" GenerateDefaultValueInCode="false" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="checkboxDoNotRename" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="checkboxDoNotDeleteVideo" Type="System.Boolean" Scope="User">
+    <Setting Name="checkboxDoNotDeleteVideo" GenerateDefaultValueInCode="false" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="checkboxDoNotConvert" Type="System.Boolean" Scope="User">
+    <Setting Name="checkboxDoNotConvert" GenerateDefaultValueInCode="false" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="downloadResolution" Type="System.Int32" Scope="User">

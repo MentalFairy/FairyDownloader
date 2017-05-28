@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dontRenameCheckbox = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.dontDeleteVideoCheckbox = new System.Windows.Forms.CheckBox();
             this.loadSongsButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.pathSelectorButton = new System.Windows.Forms.Button();
@@ -46,13 +46,13 @@
             this.downloadStatusProgressbar = new System.Windows.Forms.ProgressBar();
             this.downloadStatusLabel = new System.Windows.Forms.Label();
             this.cboResolution = new System.Windows.Forms.ComboBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dontConvertCheckbox = new System.Windows.Forms.CheckBox();
+            this.optionsPanel = new System.Windows.Forms.Panel();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.optionsPanel.SuspendLayout();
+            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // downloadLinkTextBox
@@ -85,9 +85,9 @@
             // 
             // destinationTextBox
             // 
-            this.destinationTextBox.Location = new System.Drawing.Point(106, 39);
+            this.destinationTextBox.Location = new System.Drawing.Point(110, 39);
             this.destinationTextBox.Name = "destinationTextBox";
-            this.destinationTextBox.Size = new System.Drawing.Size(309, 20);
+            this.destinationTextBox.Size = new System.Drawing.Size(305, 20);
             this.destinationTextBox.TabIndex = 3;
             this.destinationTextBox.Text = "C:\\Users\\FairyMental\\Desktop\\DownloadTest";
             // 
@@ -127,16 +127,18 @@
             this.dontRenameCheckbox.TabIndex = 11;
             this.dontRenameCheckbox.Text = "Don\'t Rename";
             this.dontRenameCheckbox.UseVisualStyleBackColor = true;
+            this.dontRenameCheckbox.CheckedChanged += new System.EventHandler(this.dontRenameCheckbox_CheckedChanged);
             // 
-            // checkBox1
+            // dontDeleteVideoCheckbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 49);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(139, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Don\'t Delete Video Files";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.dontDeleteVideoCheckbox.AutoSize = true;
+            this.dontDeleteVideoCheckbox.Location = new System.Drawing.Point(6, 49);
+            this.dontDeleteVideoCheckbox.Name = "dontDeleteVideoCheckbox";
+            this.dontDeleteVideoCheckbox.Size = new System.Drawing.Size(139, 17);
+            this.dontDeleteVideoCheckbox.TabIndex = 12;
+            this.dontDeleteVideoCheckbox.Text = "Don\'t Delete Video Files";
+            this.dontDeleteVideoCheckbox.UseVisualStyleBackColor = true;
+            this.dontDeleteVideoCheckbox.CheckedChanged += new System.EventHandler(this.dontDeleteVideoCheckbox_CheckedChanged);
             // 
             // loadSongsButton
             // 
@@ -216,49 +218,57 @@
             this.cboResolution.Size = new System.Drawing.Size(70, 21);
             this.cboResolution.TabIndex = 20;
             // 
-            // checkBox2
+            // dontConvertCheckbox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 72);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(126, 17);
-            this.checkBox2.TabIndex = 21;
-            this.checkBox2.Text = "Don\'t Convert to mp3";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.dontConvertCheckbox.AutoSize = true;
+            this.dontConvertCheckbox.Location = new System.Drawing.Point(6, 72);
+            this.dontConvertCheckbox.Name = "dontConvertCheckbox";
+            this.dontConvertCheckbox.Size = new System.Drawing.Size(126, 17);
+            this.dontConvertCheckbox.TabIndex = 21;
+            this.dontConvertCheckbox.Text = "Don\'t Convert to mp3";
+            this.dontConvertCheckbox.UseVisualStyleBackColor = true;
+            this.dontConvertCheckbox.CheckedChanged += new System.EventHandler(this.dontConvertCheckbox_CheckedChanged);
             // 
-            // panel1
+            // optionsPanel
             // 
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.dontRenameCheckbox);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Location = new System.Drawing.Point(11, 419);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 22;
+            this.optionsPanel.Controls.Add(this.label3);
+            this.optionsPanel.Controls.Add(this.dontConvertCheckbox);
+            this.optionsPanel.Controls.Add(this.dontRenameCheckbox);
+            this.optionsPanel.Controls.Add(this.dontDeleteVideoCheckbox);
+            this.optionsPanel.Location = new System.Drawing.Point(11, 419);
+            this.optionsPanel.Name = "optionsPanel";
+            this.optionsPanel.Size = new System.Drawing.Size(200, 100);
+            this.optionsPanel.TabIndex = 22;
             // 
-            // panel2
+            // mainPanel
             // 
-            this.panel2.Controls.Add(this.progressBar1);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.downloadLinkTextBox);
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.downloadLinkLabel);
-            this.panel2.Controls.Add(this.downloadStatusLabel);
-            this.panel2.Controls.Add(this.cboResolution);
-            this.panel2.Controls.Add(this.downloadStatusProgressbar);
-            this.panel2.Controls.Add(this.destinationTextBox);
-            this.panel2.Controls.Add(this.pathSelectorButton);
-            this.panel2.Controls.Add(this.destinationLabel);
-            this.panel2.Controls.Add(this.downloadVideosButton);
-            this.panel2.Controls.Add(this.loadSongsButton);
-            this.panel2.Controls.Add(this.songTitlesList);
-            this.panel2.Controls.Add(this.selectAllCheckbox);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(7, 38);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(470, 522);
-            this.panel2.TabIndex = 23;
+            this.mainPanel.Controls.Add(this.progressBar1);
+            this.mainPanel.Controls.Add(this.label2);
+            this.mainPanel.Controls.Add(this.downloadLinkTextBox);
+            this.mainPanel.Controls.Add(this.optionsPanel);
+            this.mainPanel.Controls.Add(this.downloadLinkLabel);
+            this.mainPanel.Controls.Add(this.downloadStatusLabel);
+            this.mainPanel.Controls.Add(this.cboResolution);
+            this.mainPanel.Controls.Add(this.downloadStatusProgressbar);
+            this.mainPanel.Controls.Add(this.destinationTextBox);
+            this.mainPanel.Controls.Add(this.pathSelectorButton);
+            this.mainPanel.Controls.Add(this.destinationLabel);
+            this.mainPanel.Controls.Add(this.downloadVideosButton);
+            this.mainPanel.Controls.Add(this.loadSongsButton);
+            this.mainPanel.Controls.Add(this.songTitlesList);
+            this.mainPanel.Controls.Add(this.selectAllCheckbox);
+            this.mainPanel.Controls.Add(this.label1);
+            this.mainPanel.Location = new System.Drawing.Point(7, 38);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(470, 522);
+            this.mainPanel.TabIndex = 23;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(5, 393);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(448, 15);
+            this.progressBar1.TabIndex = 24;
             // 
             // label2
             // 
@@ -269,26 +279,19 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Conversion Status:";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(5, 393);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(448, 15);
-            this.progressBar1.TabIndex = 24;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 565);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleLabel);
             this.Name = "MainForm";
             this.Text = "Fairy Downloader";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.optionsPanel.ResumeLayout(false);
+            this.optionsPanel.PerformLayout();
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,7 +307,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox dontRenameCheckbox;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox dontDeleteVideoCheckbox;
         private System.Windows.Forms.Button loadSongsButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button pathSelectorButton;
@@ -314,9 +317,9 @@
         private System.Windows.Forms.ProgressBar downloadStatusProgressbar;
         private System.Windows.Forms.Label downloadStatusLabel;
         private System.Windows.Forms.ComboBox cboResolution;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox dontConvertCheckbox;
+        private System.Windows.Forms.Panel optionsPanel;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label2;
     }
