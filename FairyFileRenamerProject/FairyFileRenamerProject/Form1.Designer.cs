@@ -51,7 +51,7 @@
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.imagePanel = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.convertionStatusProgressbar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.optionsPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -245,7 +245,7 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.progressBar1);
+            this.mainPanel.Controls.Add(this.convertionStatusProgressbar);
             this.mainPanel.Controls.Add(this.label2);
             this.mainPanel.Controls.Add(this.downloadLinkTextBox);
             this.mainPanel.Controls.Add(this.optionsPanel);
@@ -275,12 +275,12 @@
             this.imagePanel.Size = new System.Drawing.Size(133, 63);
             this.imagePanel.TabIndex = 25;
             // 
-            // progressBar1
+            // convertionStatusProgressbar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(5, 393);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(448, 15);
-            this.progressBar1.TabIndex = 24;
+            this.convertionStatusProgressbar.Location = new System.Drawing.Point(5, 393);
+            this.convertionStatusProgressbar.Name = "convertionStatusProgressbar";
+            this.convertionStatusProgressbar.Size = new System.Drawing.Size(448, 15);
+            this.convertionStatusProgressbar.TabIndex = 24;
             // 
             // label2
             // 
@@ -334,7 +334,7 @@
         private System.Windows.Forms.CheckBox dontConvertCheckbox;
         private System.Windows.Forms.Panel optionsPanel;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar convertionStatusProgressbar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel imagePanel;
     }

@@ -93,10 +93,14 @@ namespace FairyFileRenamerProject
     
         private void downloadVideosButton_Click(object sender, EventArgs e)
         {
-            
-            downloadStatusProgressbar.Maximum = videos.Length;
-            downloadStatusProgressbar.Value = 1;
+
+            downloadStatusProgressbar.Maximum = songTitlesList.CheckedItems.Count;
+            downloadStatusProgressbar.Value = 0;
             downloadStatusProgressbar.Step = 1;
+
+            convertionStatusProgressbar.Maximum = songTitlesList.CheckedItems.Count;
+            convertionStatusProgressbar.Value = 0;
+            convertionStatusProgressbar.Step = 1;
 
             dlManager = new BackgroundWorker();
             dlManager.RunWorkerCompleted += dlManager_RunWorkerCompleted;
@@ -135,10 +139,11 @@ namespace FairyFileRenamerProject
         }
         private void dlManager_WorkerProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            downloadStatusProgressbar.PerformStep();
+            mp4Files.Add(e.UserState.ToString());
             if (!dontConvertCheckbox.Checked)
             {
-                mp4Files.Add(e.UserState.ToString());
-                Mp4ToMp3Converter converter = new Mp4ToMp3Converter(e.UserState.ToString(), dontDeleteVideoCheckbox.Checked);
+                Mp4ToMp3Converter converter = new Mp4ToMp3Converter(e.UserState.ToString(), dontDeleteVideoCheckbox.Checked,convertionStatusProgressbar);
             }
             for (int i = 0; i < bkgdls.Count; i++)
             {

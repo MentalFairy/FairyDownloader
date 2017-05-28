@@ -22,14 +22,16 @@ namespace FairyFileRenamerProject
         bool dontDeleteVideoAfter = false;
 
         BackgroundWorker worker = new BackgroundWorker();
-        
 
-        public Mp4ToMp3Converter(string _inputFile,bool _dontDeleteVideoAfter)
+        ProgressBar convertionStatusProgressBar;
+
+        public Mp4ToMp3Converter(string _inputFile,bool _dontDeleteVideoAfter, ProgressBar _convertionStatusProgressBar)
         {
             inputFile = _inputFile;
             outputFile = inputFile.Substring(0, inputFile.Length - 1) + "3";
 
             dontDeleteVideoAfter = _dontDeleteVideoAfter;
+            convertionStatusProgressBar = _convertionStatusProgressBar;
 
             pathToffmpeg = Environment.CurrentDirectory +"\\ffmpeg.exe";
 
@@ -50,7 +52,7 @@ namespace FairyFileRenamerProject
         }
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            convertionStatusProgressBar.PerformStep();
         }
     }
 }
