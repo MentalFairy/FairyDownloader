@@ -18,18 +18,18 @@ namespace FairyFileRenamerProject
         string outputFile;
 
         string pathToffmpeg;
-
-        bool deleteVideoAfter = false;
+        
+        bool dontDeleteVideoAfter = false;
 
         BackgroundWorker worker = new BackgroundWorker();
         
 
-        public Mp4ToMp3Converter(string _inputFile,bool _deleteVideoAfter)
+        public Mp4ToMp3Converter(string _inputFile,bool _dontDeleteVideoAfter)
         {
             inputFile = _inputFile;
             outputFile = inputFile.Substring(0, inputFile.Length - 1) + "3";
 
-            deleteVideoAfter = _deleteVideoAfter;
+            dontDeleteVideoAfter = _dontDeleteVideoAfter;
 
             pathToffmpeg = Environment.CurrentDirectory +"\\ffmpeg.exe";
 
@@ -44,7 +44,7 @@ namespace FairyFileRenamerProject
 
             FFMPEG ffmpeg = new FFMPEG(pathToffmpeg);
             string result2 = ffmpeg.RunCommand("-i \"" + inputFile + "\" -vn -f mp3 -ab 192k \"" + outputFile + "\"");
-            if(deleteVideoAfter)
+            if(!dontDeleteVideoAfter)
                 File.Delete(inputFile);
             
         }

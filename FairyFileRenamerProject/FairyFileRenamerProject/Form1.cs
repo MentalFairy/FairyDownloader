@@ -135,10 +135,11 @@ namespace FairyFileRenamerProject
         }
         private void dlManager_WorkerProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
-            mp4Files.Add(e.UserState.ToString());
-           
-            Mp4ToMp3Converter converter = new Mp4ToMp3Converter(e.UserState.ToString(),dontDeleteVideoCheckbox.Checked);
+            if (!dontConvertCheckbox.Checked)
+            {
+                mp4Files.Add(e.UserState.ToString());
+                Mp4ToMp3Converter converter = new Mp4ToMp3Converter(e.UserState.ToString(), dontDeleteVideoCheckbox.Checked);
+            }
             for (int i = 0; i < bkgdls.Count; i++)
             {
                 if (bkgdls[i].filePath == mp4Files[mp4Files.Count - 1])
@@ -150,7 +151,6 @@ namespace FairyFileRenamerProject
                     {
                         bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload++].id, downloadStatusProgressbar, dlManager));
                     }
-                    
                     break;
                 }
 
