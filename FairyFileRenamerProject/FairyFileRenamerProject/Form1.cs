@@ -71,7 +71,8 @@ namespace FairyFileRenamerProject
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
                 destinationTextBox.Text = fbd.SelectedPath;
-
+                Properties.Settings.Default.destinationPath = destinationTextBox.Text;
+                saveSettings();
             }
         }
 
