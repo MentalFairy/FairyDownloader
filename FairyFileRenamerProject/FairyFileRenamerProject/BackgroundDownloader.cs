@@ -25,7 +25,6 @@ namespace FairyFileRenamerProject
         public bool finished = false;
 
         ProgressBar progressBar;
-        double progress = 0;
 
 
         public BackgroundDownloader( string _Path, string _videoURL, ProgressBar _progressBar, BackgroundWorker _bkgdls)
