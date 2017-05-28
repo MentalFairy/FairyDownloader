@@ -121,7 +121,7 @@ namespace FairyFileRenamerProject
                     checkedVideos.Add(videos[k]);
             }
 
-            int maxDownloads = 2;
+            int maxDownloads = 1;
             for (nextDownload = 0; nextDownload < maxDownloads; nextDownload++) 
             {
                 if (nextDownload >= checkedVideos.Count)

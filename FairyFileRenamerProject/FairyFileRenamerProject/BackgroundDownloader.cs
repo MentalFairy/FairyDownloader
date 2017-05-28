@@ -8,6 +8,9 @@ using YoutubeExtractor;
 using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using NYoutubeDL;
+using System.Diagnostics;
+using NYoutubeDL.Helpers;
 
 namespace FairyFileRenamerProject
 {
@@ -15,12 +18,12 @@ namespace FairyFileRenamerProject
     {
         BackgroundWorker worker = new BackgroundWorker();
         BackgroundWorker bkgdls;
-
-        IEnumerable<VideoInfo> videoInfos;
+        
         string destionationPath;
         string videoLink;
 
         public string filePath = "";
+        public string youtubeDLpath;
 
         public bool finished = false;
 
@@ -36,6 +39,8 @@ namespace FairyFileRenamerProject
 
             bkgdls = _bkgdls;
 
+            youtubeDLpath = Environment.CurrentDirectory + "\\youtube-dl.exe";
+
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             worker.WorkerReportsProgress = true;
             worker.DoWork += worker_DoWork;
@@ -50,42 +55,55 @@ namespace FairyFileRenamerProject
         }
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            videoInfos = DownloadUrlResolver.GetDownloadUrls(videoLink, false);
-            DownloadVideo(videoInfos);
-        }
-        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            //
-        }
-        private void DownloadVideo(IEnumerable<VideoInfo> videoInfos)
-        {
+            YoutubeDL youtubeDL = new YoutubeDL();
+            //  MessageBox.Show(youtubeDL.Options.FilesystemOptions.Output);
+            
+            youtubeDL.Options.FilesystemOptions.Output = destionationPath;
+            youtubeDL.Options.PostProcessingOptions.ExtractAudio = false;
+            youtubeDL.VideoUrl = videoLink;
+
+            youtubeDL.Options.DownloadOptions.FragmentRetries = -1;
+            youtubeDL.Options.DownloadOptions.Retries = -1;
+            youtubeDL.Options.VideoFormatOptions.Format = Enums.VideoFormat.mp4;
+            youtubeDL.Options.PostProcessingOptions.AudioFormat = Enums.AudioFormat.mp3;
+            youtubeDL.Options.PostProcessingOptions.AudioQuality = "0";
+
+         //   MessageBox.Show(youtubeDL.Options.VideoFormatOptions.Format + " \n " + youtubeDL.Options.VideoFormatOptions.MergeOutputFormat);
+
+    //        youtubeDL.StandardOutputEvent += (thissender, output) => MessageBox.Show(output);
+            youtubeDL.StandardErrorEvent += (thissender, errorOutput) => MessageBox.Show(errorOutput);
+
+            MessageBox.Show(youtubeDL.Options.FilesystemOptions.Output);
+
+            youtubeDL.Options.GeneralOptions.Update = true;
+            youtubeDL.YoutubeDlPath = youtubeDLpath;
+
+            youtubeDL.PrepareDownload();
+            Process ydlDownloadProcess = youtubeDL.Download();
+            ydlDownloadProcess.StartInfo.UseShellExecute = true;
+            
+            ydlDownloadProcess.StartInfo.Verb = "runas";
+            ydlDownloadProcess.Start();
+
+            
 
             try
             {
-                VideoInfo video = videoInfos
-                    .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
-
-                if (video.RequiresDecryption)
-                {
-                    DownloadUrlResolver.DecryptDownloadUrl(video);
-                }
-
-                var videoDownloader = new VideoDownloader(video, Path.Combine(destionationPath, RemoveIllegalPathCharacters(video.Title) + video.VideoExtension));
-                filePath = Path.Combine(destionationPath, RemoveIllegalPathCharacters(video.Title) + video.VideoExtension);
-                videoDownloader.DownloadProgressChanged += (sender, args) => worker.ReportProgress((int)(args.ProgressPercentage));
-                videoDownloader.Execute();
+                
+                
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
+
         }
-        private static string RemoveIllegalPathCharacters(string path)
+        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
-            var r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
-            return r.Replace(path, "");
+            //
         }
+        
+        
     }
 }

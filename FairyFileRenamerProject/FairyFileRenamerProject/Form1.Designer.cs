@@ -50,9 +50,9 @@
             this.dontConvertCheckbox = new System.Windows.Forms.CheckBox();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.imagePanel = new System.Windows.Forms.Panel();
             this.convertionStatusProgressbar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.imagePanel = new System.Windows.Forms.Panel();
             this.optionsPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -245,6 +245,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.imagePanel);
             this.mainPanel.Controls.Add(this.convertionStatusProgressbar);
             this.mainPanel.Controls.Add(this.label2);
             this.mainPanel.Controls.Add(this.downloadLinkTextBox);
@@ -266,15 +267,6 @@
             this.mainPanel.Size = new System.Drawing.Size(470, 534);
             this.mainPanel.TabIndex = 23;
             // 
-            // imagePanel
-            // 
-            this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
-            this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imagePanel.Location = new System.Drawing.Point(311, 0);
-            this.imagePanel.Name = "imagePanel";
-            this.imagePanel.Size = new System.Drawing.Size(133, 63);
-            this.imagePanel.TabIndex = 25;
-            // 
             // convertionStatusProgressbar
             // 
             this.convertionStatusProgressbar.Location = new System.Drawing.Point(5, 393);
@@ -291,12 +283,20 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Conversion Status:";
             // 
+            // imagePanel
+            // 
+            this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
+            this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imagePanel.Location = new System.Drawing.Point(265, 465);
+            this.imagePanel.Name = "imagePanel";
+            this.imagePanel.Size = new System.Drawing.Size(133, 63);
+            this.imagePanel.TabIndex = 25;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 603);
-            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
