@@ -138,7 +138,7 @@ namespace FairyFileRenamerProject
 
             mp4Files.Add(e.UserState.ToString());
            
-            Mp4ToMp3Converter converter = new Mp4ToMp3Converter(e.UserState.ToString());
+            Mp4ToMp3Converter converter = new Mp4ToMp3Converter(e.UserState.ToString(),dontDeleteVideoCheckbox.Checked);
             for (int i = 0; i < bkgdls.Count; i++)
             {
                 if (bkgdls[i].filePath == mp4Files[mp4Files.Count - 1])

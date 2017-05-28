@@ -114,16 +114,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 10);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(64, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "Options";
             // 
             // dontRenameCheckbox
             // 
             this.dontRenameCheckbox.AutoSize = true;
-            this.dontRenameCheckbox.Location = new System.Drawing.Point(6, 26);
+            this.dontRenameCheckbox.Location = new System.Drawing.Point(8, 46);
             this.dontRenameCheckbox.Name = "dontRenameCheckbox";
             this.dontRenameCheckbox.Size = new System.Drawing.Size(94, 17);
             this.dontRenameCheckbox.TabIndex = 11;
@@ -134,7 +135,7 @@
             // dontDeleteVideoCheckbox
             // 
             this.dontDeleteVideoCheckbox.AutoSize = true;
-            this.dontDeleteVideoCheckbox.Location = new System.Drawing.Point(6, 49);
+            this.dontDeleteVideoCheckbox.Location = new System.Drawing.Point(8, 69);
             this.dontDeleteVideoCheckbox.Name = "dontDeleteVideoCheckbox";
             this.dontDeleteVideoCheckbox.Size = new System.Drawing.Size(139, 17);
             this.dontDeleteVideoCheckbox.TabIndex = 12;
@@ -223,7 +224,7 @@
             // dontConvertCheckbox
             // 
             this.dontConvertCheckbox.AutoSize = true;
-            this.dontConvertCheckbox.Location = new System.Drawing.Point(6, 72);
+            this.dontConvertCheckbox.Location = new System.Drawing.Point(8, 92);
             this.dontConvertCheckbox.Name = "dontConvertCheckbox";
             this.dontConvertCheckbox.Size = new System.Drawing.Size(126, 17);
             this.dontConvertCheckbox.TabIndex = 21;
@@ -237,9 +238,9 @@
             this.optionsPanel.Controls.Add(this.dontConvertCheckbox);
             this.optionsPanel.Controls.Add(this.dontRenameCheckbox);
             this.optionsPanel.Controls.Add(this.dontDeleteVideoCheckbox);
-            this.optionsPanel.Location = new System.Drawing.Point(11, 419);
+            this.optionsPanel.Location = new System.Drawing.Point(3, 419);
             this.optionsPanel.Name = "optionsPanel";
-            this.optionsPanel.Size = new System.Drawing.Size(200, 100);
+            this.optionsPanel.Size = new System.Drawing.Size(200, 112);
             this.optionsPanel.TabIndex = 22;
             // 
             // mainPanel
@@ -260,9 +261,9 @@
             this.mainPanel.Controls.Add(this.songTitlesList);
             this.mainPanel.Controls.Add(this.selectAllCheckbox);
             this.mainPanel.Controls.Add(this.label1);
-            this.mainPanel.Location = new System.Drawing.Point(12, 69);
+            this.mainPanel.Location = new System.Drawing.Point(12, 57);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(470, 522);
+            this.mainPanel.Size = new System.Drawing.Size(470, 534);
             this.mainPanel.TabIndex = 23;
             // 
             // imagePanel
@@ -294,7 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 625);
+            this.ClientSize = new System.Drawing.Size(484, 603);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleLabel);
