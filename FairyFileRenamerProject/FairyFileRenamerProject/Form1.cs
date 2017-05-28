@@ -182,5 +182,6 @@ namespace FairyFileRenamerProject
         {
             Properties.Settings.Default.Save();
         }
+
     }
 }

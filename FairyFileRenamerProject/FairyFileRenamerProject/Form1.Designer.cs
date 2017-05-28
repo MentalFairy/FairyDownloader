@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.downloadLinkTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.downloadLinkLabel = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@
             this.dontConvertCheckbox = new System.Windows.Forms.CheckBox();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.imagePanel = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.optionsPanel.SuspendLayout();
@@ -67,10 +69,10 @@
             // 
             this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(162, 9);
+            this.titleLabel.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(45, 18);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(162, 26);
+            this.titleLabel.Size = new System.Drawing.Size(226, 36);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "Fairy Downloader";
             // 
@@ -258,10 +260,19 @@
             this.mainPanel.Controls.Add(this.songTitlesList);
             this.mainPanel.Controls.Add(this.selectAllCheckbox);
             this.mainPanel.Controls.Add(this.label1);
-            this.mainPanel.Location = new System.Drawing.Point(7, 38);
+            this.mainPanel.Location = new System.Drawing.Point(12, 69);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(470, 522);
             this.mainPanel.TabIndex = 23;
+            // 
+            // imagePanel
+            // 
+            this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
+            this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imagePanel.Location = new System.Drawing.Point(311, 0);
+            this.imagePanel.Name = "imagePanel";
+            this.imagePanel.Size = new System.Drawing.Size(133, 63);
+            this.imagePanel.TabIndex = 25;
             // 
             // progressBar1
             // 
@@ -283,9 +294,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 565);
+            this.ClientSize = new System.Drawing.Size(484, 625);
+            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Fairy Downloader";
             this.optionsPanel.ResumeLayout(false);
@@ -322,6 +335,7 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel imagePanel;
     }
 }
 
