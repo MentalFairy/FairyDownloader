@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FairyFileRenamerProject")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("FairyDownloader")]
+[assembly: AssemblyDescription("Software that downloads and converts youtube videos providing a link.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FairyFileRenamerProject")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("FairyMental Std.")]
+[assembly: AssemblyProduct("FairyDownloader")]
+[assembly: AssemblyCopyright("FairyMentalCopyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
