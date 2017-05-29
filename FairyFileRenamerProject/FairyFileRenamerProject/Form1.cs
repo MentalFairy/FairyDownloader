@@ -46,23 +46,39 @@ namespace FairyFileRenamerProject
         }
         private void loadSongsButton_Click(object sender, EventArgs e)
         {
+            BackgroundWorker titlesWorker = new BackgroundWorker();
+            titlesWorker.DoWork += titlesWorker_DoWork;
+            titlesWorker.RunWorkerCompleted += titlesWorker_RunWorkerCompleted;
+            titlesWorker.RunWorkerAsync();
+
+            loadSongsButton.Text = "Loading Titles, please wait...";
+            loadSongsButton.Enabled = false;
+        }
+        private void titlesWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
             string playListID = "";
             int index = downloadLinkTextBox.Text.LastIndexOf("list=") + 5;
-            while(index < downloadLinkTextBox.Text.Length)
+            while (index < downloadLinkTextBox.Text.Length)
             {
                 playListID += downloadLinkTextBox.Text[index++];
             }
 
             videos = YouTubeApi.GetPlayList(playListID);
 
+            
+        }
+        private void titlesWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            int i = 0;
             foreach (var video in videos)
             {
-                songTitlesList.Items.Add(video.title + " " + video.id);
+                songTitlesList.Items.Add(i++ + " " + video.title);
             }
             selectAllCheckbox.Checked = true;
             CheckAllItems();
+            loadSongsButton.Text = "Load Link and Display Song Titles";
+            loadSongsButton.Enabled = true;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -108,6 +124,9 @@ namespace FairyFileRenamerProject
             dlManager.WorkerReportsProgress = true;
             dlManager.ProgressChanged += dlManager_WorkerProgressChanged;
 
+            downloadVideosButton.Text = "Videos are downloading...";
+            downloadVideosButton.Enabled = false;
+
             dlManager.RunWorkerAsync();
          
         }
@@ -127,7 +146,7 @@ namespace FairyFileRenamerProject
                 if (nextDownload >= checkedVideos.Count)
                     break;
                 else
-                    bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload].id, downloadStatusProgressbar,dlManager));
+                    bkgdls.Add( new BackgroundDownloader(checkedVideos[nextDownload].title, destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload].id, downloadStatusProgressbar,dlManager));
             }
 
             //Mp4ToMp3Converter converter = new Mp4ToMp3Converter(@"C:\Users\FairyMental\Desktop\DownloadTest\01. BAZOOKA - Trotineta cu Trei Roţi (Prod. ECHO).mp4");
@@ -154,7 +173,7 @@ namespace FairyFileRenamerProject
                         break;
                     else
                     {
-                        bkgdls.Add(new BackgroundDownloader(destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload++].id, downloadStatusProgressbar, dlManager));
+                        bkgdls.Add(new BackgroundDownloader(checkedVideos[nextDownload].title, destinationTextBox.Text, "https://www.youtube.com/watch?v=" + checkedVideos[nextDownload++].id, downloadStatusProgressbar, dlManager));
                     }
                     break;
                 }
@@ -163,7 +182,8 @@ namespace FairyFileRenamerProject
         }
         private void dlManager_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+            downloadVideosButton.Text = "Download Videos";
+            downloadVideosButton.Enabled = true;
         }
 
         private void dontRenameCheckbox_CheckedChanged(object sender, EventArgs e)

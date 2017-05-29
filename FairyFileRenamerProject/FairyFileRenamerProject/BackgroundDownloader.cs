@@ -19,21 +19,25 @@ namespace FairyFileRenamerProject
         IEnumerable<VideoInfo> videoInfos;
         string destionationPath;
         string videoLink;
+        string title;
 
         public string filePath = "";
 
         public bool finished = false;
+        VideoInfo video;
 
         ProgressBar progressBar;
 
+        int attempt = 0;
 
-        public BackgroundDownloader( string _Path, string _videoURL, ProgressBar _progressBar, BackgroundWorker _bkgdls)
+        public BackgroundDownloader(string _title, string _Path, string _videoURL, ProgressBar _progressBar, BackgroundWorker _bkgdls)
         {
             destionationPath = _Path;
             videoLink = _videoURL;
             progressBar = _progressBar;
             finished = false;
-
+            title = _title;
+            
             bkgdls = _bkgdls;
 
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
@@ -62,8 +66,27 @@ namespace FairyFileRenamerProject
 
             try
             {
-                VideoInfo video = videoInfos
-                    .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
+                if (attempt == 0)
+                {
+                    video = videoInfos.First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
+                }
+                else if (attempt == 1)
+                {
+                    video = videoInfos.First(info => info.VideoType == VideoType.Flash && info.Resolution == 360);
+
+                }
+                else if (attempt == 2)
+                {
+                    video = videoInfos.First(info => info.VideoType == VideoType.Mobile && info.Resolution == 360);
+                }
+                else if (attempt == 3)
+                {
+                    video = videoInfos.First(info => info.VideoType == VideoType.WebM && info.Resolution == 360);
+                }
+                else if (attempt == 4)
+                {
+                    video = videoInfos.First(info => info.VideoType == VideoType.Unknown && info.Resolution == 360);
+                }
 
                 if (video.RequiresDecryption)
                 {
@@ -75,9 +98,15 @@ namespace FairyFileRenamerProject
                 videoDownloader.DownloadProgressChanged += (sender, args) => worker.ReportProgress((int)(args.ProgressPercentage));
                 videoDownloader.Execute();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                if (attempt < 5)
+                {
+                    
+                  //  MessageBox.Show(attempt + ": " + video.VideoType + " " + video.VideoExtension + ex.Message);
+                    attempt++;
+                    DownloadVideo(videoInfos);
+                }
             }
 
         }
