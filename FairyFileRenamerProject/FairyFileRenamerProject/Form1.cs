@@ -21,6 +21,7 @@ using FairyFileRenamerProject;
 using YoutubeExtractor;
 using System.Text.RegularExpressions;
 using System.Collections;
+
 namespace FairyFileRenamerProject
 {
     public partial class MainForm : Form
@@ -53,6 +54,8 @@ namespace FairyFileRenamerProject
 
             loadSongsButton.Text = "Loading Titles, please wait...";
             loadSongsButton.Enabled = false;
+            loadSongsButton.BackColor = Color.FromArgb(255, 70, 0, 0);
+  
         }
         private void titlesWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -78,6 +81,7 @@ namespace FairyFileRenamerProject
             CheckAllItems();
             loadSongsButton.Text = "Load Link and Display Song Titles";
             loadSongsButton.Enabled = true;
+            loadSongsButton.BackColor = Color.FromArgb(255, 120, 0, 0);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -126,6 +130,7 @@ namespace FairyFileRenamerProject
 
             downloadVideosButton.Text = "Videos are downloading...";
             downloadVideosButton.Enabled = false;
+            downloadVideosButton.BackColor = Color.FromArgb(255, 70, 0, 0);
 
             dlManager.RunWorkerAsync();
          
@@ -184,6 +189,7 @@ namespace FairyFileRenamerProject
         {
             downloadVideosButton.Text = "Download Videos";
             downloadVideosButton.Enabled = true;
+            downloadVideosButton.BackColor = Color.FromArgb(255, 120, 0, 0);
         }
 
         private void dontRenameCheckbox_CheckedChanged(object sender, EventArgs e)

@@ -50,9 +50,10 @@
             this.dontConvertCheckbox = new System.Windows.Forms.CheckBox();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.imagePanel = new System.Windows.Forms.Panel();
             this.convertionStatusProgressbar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.imagePanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.optionsPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,8 @@
             // downloadLinkTextBox
             // 
             this.downloadLinkTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.downloadLinkTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.downloadLinkTextBox.ForeColor = System.Drawing.Color.Cyan;
             this.downloadLinkTextBox.Location = new System.Drawing.Point(110, 8);
             this.downloadLinkTextBox.Name = "downloadLinkTextBox";
             this.downloadLinkTextBox.Size = new System.Drawing.Size(346, 20);
@@ -70,15 +73,17 @@
             this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(45, 18);
+            this.titleLabel.ForeColor = System.Drawing.Color.Maroon;
+            this.titleLabel.Location = new System.Drawing.Point(126, 18);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(226, 36);
+            this.titleLabel.Size = new System.Drawing.Size(159, 36);
             this.titleLabel.TabIndex = 1;
-            this.titleLabel.Text = "Fairy Downloader";
+            this.titleLabel.Text = "Downloader";
             // 
             // downloadLinkLabel
             // 
             this.downloadLinkLabel.AutoSize = true;
+            this.downloadLinkLabel.ForeColor = System.Drawing.Color.White;
             this.downloadLinkLabel.Location = new System.Drawing.Point(8, 11);
             this.downloadLinkLabel.Name = "downloadLinkLabel";
             this.downloadLinkLabel.Size = new System.Drawing.Size(81, 13);
@@ -87,6 +92,8 @@
             // 
             // destinationTextBox
             // 
+            this.destinationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.destinationTextBox.ForeColor = System.Drawing.Color.Cyan;
             this.destinationTextBox.Location = new System.Drawing.Point(110, 39);
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.Size = new System.Drawing.Size(305, 20);
@@ -96,6 +103,7 @@
             // destinationLabel
             // 
             this.destinationLabel.AutoSize = true;
+            this.destinationLabel.ForeColor = System.Drawing.Color.White;
             this.destinationLabel.Location = new System.Drawing.Point(8, 46);
             this.destinationLabel.Name = "destinationLabel";
             this.destinationLabel.Size = new System.Drawing.Size(88, 13);
@@ -105,6 +113,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(8, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
@@ -114,16 +123,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(3, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 20);
+            this.label3.Size = new System.Drawing.Size(71, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "Options";
             // 
             // dontRenameCheckbox
             // 
             this.dontRenameCheckbox.AutoSize = true;
+            this.dontRenameCheckbox.ForeColor = System.Drawing.Color.White;
             this.dontRenameCheckbox.Location = new System.Drawing.Point(8, 46);
             this.dontRenameCheckbox.Name = "dontRenameCheckbox";
             this.dontRenameCheckbox.Size = new System.Drawing.Size(94, 17);
@@ -135,6 +146,7 @@
             // dontDeleteVideoCheckbox
             // 
             this.dontDeleteVideoCheckbox.AutoSize = true;
+            this.dontDeleteVideoCheckbox.ForeColor = System.Drawing.Color.White;
             this.dontDeleteVideoCheckbox.Location = new System.Drawing.Point(8, 69);
             this.dontDeleteVideoCheckbox.Name = "dontDeleteVideoCheckbox";
             this.dontDeleteVideoCheckbox.Size = new System.Drawing.Size(139, 17);
@@ -145,27 +157,33 @@
             // 
             // loadSongsButton
             // 
+            this.loadSongsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.loadSongsButton.ForeColor = System.Drawing.Color.White;
             this.loadSongsButton.Location = new System.Drawing.Point(8, 67);
             this.loadSongsButton.Name = "loadSongsButton";
             this.loadSongsButton.Size = new System.Drawing.Size(448, 23);
             this.loadSongsButton.TabIndex = 13;
             this.loadSongsButton.Text = "Load Link and Display Song Titles";
-            this.loadSongsButton.UseVisualStyleBackColor = true;
+            this.loadSongsButton.UseVisualStyleBackColor = false;
             this.loadSongsButton.Click += new System.EventHandler(this.loadSongsButton_Click);
             // 
             // pathSelectorButton
             // 
+            this.pathSelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pathSelectorButton.ForeColor = System.Drawing.Color.White;
             this.pathSelectorButton.Location = new System.Drawing.Point(421, 39);
             this.pathSelectorButton.Name = "pathSelectorButton";
-            this.pathSelectorButton.Size = new System.Drawing.Size(35, 22);
+            this.pathSelectorButton.Size = new System.Drawing.Size(35, 20);
             this.pathSelectorButton.TabIndex = 14;
             this.pathSelectorButton.Text = ". . .";
-            this.pathSelectorButton.UseVisualStyleBackColor = true;
+            this.pathSelectorButton.UseVisualStyleBackColor = false;
             this.pathSelectorButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // songTitlesList
             // 
+            this.songTitlesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.songTitlesList.CheckOnClick = true;
+            this.songTitlesList.ForeColor = System.Drawing.Color.Cyan;
             this.songTitlesList.FormattingEnabled = true;
             this.songTitlesList.Location = new System.Drawing.Point(8, 122);
             this.songTitlesList.Name = "songTitlesList";
@@ -175,6 +193,7 @@
             // selectAllCheckbox
             // 
             this.selectAllCheckbox.AutoSize = true;
+            this.selectAllCheckbox.ForeColor = System.Drawing.Color.White;
             this.selectAllCheckbox.Location = new System.Drawing.Point(381, 99);
             this.selectAllCheckbox.Name = "selectAllCheckbox";
             this.selectAllCheckbox.Size = new System.Drawing.Size(70, 17);
@@ -185,12 +204,14 @@
             // 
             // downloadVideosButton
             // 
+            this.downloadVideosButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.downloadVideosButton.ForeColor = System.Drawing.Color.White;
             this.downloadVideosButton.Location = new System.Drawing.Point(8, 282);
             this.downloadVideosButton.Name = "downloadVideosButton";
             this.downloadVideosButton.Size = new System.Drawing.Size(448, 23);
             this.downloadVideosButton.TabIndex = 17;
             this.downloadVideosButton.Text = "Download Videos";
-            this.downloadVideosButton.UseVisualStyleBackColor = true;
+            this.downloadVideosButton.UseVisualStyleBackColor = false;
             this.downloadVideosButton.Click += new System.EventHandler(this.downloadVideosButton_Click);
             // 
             // downloadStatusProgressbar
@@ -203,6 +224,7 @@
             // downloadStatusLabel
             // 
             this.downloadStatusLabel.AutoSize = true;
+            this.downloadStatusLabel.ForeColor = System.Drawing.Color.White;
             this.downloadStatusLabel.Location = new System.Drawing.Point(5, 343);
             this.downloadStatusLabel.Name = "downloadStatusLabel";
             this.downloadStatusLabel.Size = new System.Drawing.Size(94, 13);
@@ -211,6 +233,7 @@
             // 
             // cboResolution
             // 
+            this.cboResolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.cboResolution.FormattingEnabled = true;
             this.cboResolution.Items.AddRange(new object[] {
             "360",
@@ -224,6 +247,7 @@
             // dontConvertCheckbox
             // 
             this.dontConvertCheckbox.AutoSize = true;
+            this.dontConvertCheckbox.ForeColor = System.Drawing.Color.White;
             this.dontConvertCheckbox.Location = new System.Drawing.Point(8, 92);
             this.dontConvertCheckbox.Name = "dontConvertCheckbox";
             this.dontConvertCheckbox.Size = new System.Drawing.Size(126, 17);
@@ -266,15 +290,6 @@
             this.mainPanel.Size = new System.Drawing.Size(470, 534);
             this.mainPanel.TabIndex = 23;
             // 
-            // imagePanel
-            // 
-            this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
-            this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imagePanel.Location = new System.Drawing.Point(311, 0);
-            this.imagePanel.Name = "imagePanel";
-            this.imagePanel.Size = new System.Drawing.Size(133, 63);
-            this.imagePanel.TabIndex = 25;
-            // 
             // convertionStatusProgressbar
             // 
             this.convertionStatusProgressbar.Location = new System.Drawing.Point(5, 393);
@@ -285,20 +300,44 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(5, 377);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 23;
             this.label2.Text = "Conversion Status:";
             // 
+            // imagePanel
+            // 
+            this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
+            this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imagePanel.Location = new System.Drawing.Point(311, 0);
+            this.imagePanel.Name = "imagePanel";
+            this.imagePanel.Size = new System.Drawing.Size(133, 54);
+            this.imagePanel.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label4.Location = new System.Drawing.Point(55, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 36);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Fairy ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(484, 603);
+            this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.titleLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Fairy Downloader";
@@ -337,6 +376,7 @@
         private System.Windows.Forms.ProgressBar convertionStatusProgressbar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel imagePanel;
+        private System.Windows.Forms.Label label4;
     }
 }
 
