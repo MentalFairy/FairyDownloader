@@ -43,19 +43,26 @@
             this.pathSelectorButton = new System.Windows.Forms.Button();
             this.songTitlesList = new System.Windows.Forms.CheckedListBox();
             this.selectAllCheckbox = new System.Windows.Forms.CheckBox();
-            this.downloadVideosButton = new System.Windows.Forms.Button();
             this.downloadStatusProgressbar = new System.Windows.Forms.ProgressBar();
             this.downloadStatusLabel = new System.Windows.Forms.Label();
             this.cboResolution = new System.Windows.Forms.ComboBox();
             this.dontConvertCheckbox = new System.Windows.Forms.CheckBox();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.loadLinkPanel = new System.Windows.Forms.Panel();
+            this.loadLinkLabel = new System.Windows.Forms.Label();
             this.convertionStatusProgressbar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
-            this.imagePanel = new System.Windows.Forms.Panel();
+            this.downloadVideosPanel = new System.Windows.Forms.Panel();
+            this.downloadVideosLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.imagePanel = new System.Windows.Forms.Panel();
+            this.downloadVideosButton = new System.Windows.Forms.Button();
             this.optionsPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
+            this.loadLinkPanel.SuspendLayout();
+            this.downloadVideosPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // downloadLinkTextBox
@@ -65,7 +72,7 @@
             this.downloadLinkTextBox.ForeColor = System.Drawing.Color.Cyan;
             this.downloadLinkTextBox.Location = new System.Drawing.Point(110, 8);
             this.downloadLinkTextBox.Name = "downloadLinkTextBox";
-            this.downloadLinkTextBox.Size = new System.Drawing.Size(346, 20);
+            this.downloadLinkTextBox.Size = new System.Drawing.Size(349, 20);
             this.downloadLinkTextBox.TabIndex = 0;
             // 
             // titleLabel
@@ -96,7 +103,7 @@
             this.destinationTextBox.ForeColor = System.Drawing.Color.Cyan;
             this.destinationTextBox.Location = new System.Drawing.Point(110, 39);
             this.destinationTextBox.Name = "destinationTextBox";
-            this.destinationTextBox.Size = new System.Drawing.Size(305, 20);
+            this.destinationTextBox.Size = new System.Drawing.Size(308, 20);
             this.destinationTextBox.TabIndex = 3;
             this.destinationTextBox.Text = "C:\\Users\\FairyMental\\Desktop\\DownloadTest";
             // 
@@ -159,7 +166,7 @@
             // 
             this.loadSongsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.loadSongsButton.ForeColor = System.Drawing.Color.White;
-            this.loadSongsButton.Location = new System.Drawing.Point(8, 67);
+            this.loadSongsButton.Location = new System.Drawing.Point(521, 212);
             this.loadSongsButton.Name = "loadSongsButton";
             this.loadSongsButton.Size = new System.Drawing.Size(448, 23);
             this.loadSongsButton.TabIndex = 13;
@@ -170,12 +177,12 @@
             // pathSelectorButton
             // 
             this.pathSelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pathSelectorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pathSelectorButton.ForeColor = System.Drawing.Color.White;
-            this.pathSelectorButton.Location = new System.Drawing.Point(421, 39);
+            this.pathSelectorButton.Location = new System.Drawing.Point(424, 39);
             this.pathSelectorButton.Name = "pathSelectorButton";
             this.pathSelectorButton.Size = new System.Drawing.Size(35, 20);
             this.pathSelectorButton.TabIndex = 14;
-            this.pathSelectorButton.Text = ". . .";
             this.pathSelectorButton.UseVisualStyleBackColor = false;
             this.pathSelectorButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -185,10 +192,11 @@
             this.songTitlesList.CheckOnClick = true;
             this.songTitlesList.ForeColor = System.Drawing.Color.Cyan;
             this.songTitlesList.FormattingEnabled = true;
-            this.songTitlesList.Location = new System.Drawing.Point(8, 122);
+            this.songTitlesList.Location = new System.Drawing.Point(5, 122);
             this.songTitlesList.Name = "songTitlesList";
-            this.songTitlesList.Size = new System.Drawing.Size(448, 154);
+            this.songTitlesList.Size = new System.Drawing.Size(454, 154);
             this.songTitlesList.TabIndex = 15;
+            this.songTitlesList.Click += new System.EventHandler(this.loadSongsButton_Click);
             // 
             // selectAllCheckbox
             // 
@@ -202,23 +210,11 @@
             this.selectAllCheckbox.UseVisualStyleBackColor = true;
             this.selectAllCheckbox.CheckedChanged += new System.EventHandler(this.selectAllCheckbox_CheckedChanged);
             // 
-            // downloadVideosButton
-            // 
-            this.downloadVideosButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.downloadVideosButton.ForeColor = System.Drawing.Color.White;
-            this.downloadVideosButton.Location = new System.Drawing.Point(8, 282);
-            this.downloadVideosButton.Name = "downloadVideosButton";
-            this.downloadVideosButton.Size = new System.Drawing.Size(448, 23);
-            this.downloadVideosButton.TabIndex = 17;
-            this.downloadVideosButton.Text = "Download Videos";
-            this.downloadVideosButton.UseVisualStyleBackColor = false;
-            this.downloadVideosButton.Click += new System.EventHandler(this.downloadVideosButton_Click);
-            // 
             // downloadStatusProgressbar
             // 
             this.downloadStatusProgressbar.Location = new System.Drawing.Point(5, 359);
             this.downloadStatusProgressbar.Name = "downloadStatusProgressbar";
-            this.downloadStatusProgressbar.Size = new System.Drawing.Size(448, 15);
+            this.downloadStatusProgressbar.Size = new System.Drawing.Size(454, 15);
             this.downloadStatusProgressbar.TabIndex = 18;
             // 
             // downloadStatusLabel
@@ -239,7 +235,7 @@
             "360",
             "480",
             "720"});
-            this.cboResolution.Location = new System.Drawing.Point(386, 311);
+            this.cboResolution.Location = new System.Drawing.Point(386, 282);
             this.cboResolution.Name = "cboResolution";
             this.cboResolution.Size = new System.Drawing.Size(70, 21);
             this.cboResolution.TabIndex = 20;
@@ -269,6 +265,8 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.label7);
+            this.mainPanel.Controls.Add(this.loadLinkPanel);
             this.mainPanel.Controls.Add(this.convertionStatusProgressbar);
             this.mainPanel.Controls.Add(this.label2);
             this.mainPanel.Controls.Add(this.downloadLinkTextBox);
@@ -278,23 +276,56 @@
             this.mainPanel.Controls.Add(this.cboResolution);
             this.mainPanel.Controls.Add(this.downloadStatusProgressbar);
             this.mainPanel.Controls.Add(this.destinationTextBox);
-            this.mainPanel.Controls.Add(this.pathSelectorButton);
             this.mainPanel.Controls.Add(this.destinationLabel);
-            this.mainPanel.Controls.Add(this.downloadVideosButton);
-            this.mainPanel.Controls.Add(this.loadSongsButton);
             this.mainPanel.Controls.Add(this.songTitlesList);
             this.mainPanel.Controls.Add(this.selectAllCheckbox);
             this.mainPanel.Controls.Add(this.label1);
-            this.mainPanel.Location = new System.Drawing.Point(12, 57);
+            this.mainPanel.Controls.Add(this.downloadVideosPanel);
+            this.mainPanel.Controls.Add(this.pathSelectorButton);
+            this.mainPanel.Location = new System.Drawing.Point(9, 60);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(470, 534);
             this.mainPanel.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label7.ForeColor = System.Drawing.Color.Aqua;
+            this.label7.Location = new System.Drawing.Point(429, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(22, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = ". . .";
+            // 
+            // loadLinkPanel
+            // 
+            this.loadLinkPanel.BackgroundImage = global::FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_1201;
+            this.loadLinkPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.loadLinkPanel.Controls.Add(this.loadLinkLabel);
+            this.loadLinkPanel.Location = new System.Drawing.Point(0, 64);
+            this.loadLinkPanel.Name = "loadLinkPanel";
+            this.loadLinkPanel.Size = new System.Drawing.Size(470, 29);
+            this.loadLinkPanel.TabIndex = 26;
+            this.loadLinkPanel.Click += new System.EventHandler(this.loadSongsButton_Click);
+            // 
+            // loadLinkLabel
+            // 
+            this.loadLinkLabel.AutoSize = true;
+            this.loadLinkLabel.BackColor = System.Drawing.Color.Transparent;
+            this.loadLinkLabel.ForeColor = System.Drawing.Color.Aqua;
+            this.loadLinkLabel.Location = new System.Drawing.Point(150, 7);
+            this.loadLinkLabel.Name = "loadLinkLabel";
+            this.loadLinkLabel.Size = new System.Drawing.Size(155, 13);
+            this.loadLinkLabel.TabIndex = 0;
+            this.loadLinkLabel.Text = "Load Link - Dispaly Video Titles";
+            this.loadLinkLabel.Click += new System.EventHandler(this.loadSongsButton_Click);
             // 
             // convertionStatusProgressbar
             // 
             this.convertionStatusProgressbar.Location = new System.Drawing.Point(5, 393);
             this.convertionStatusProgressbar.Name = "convertionStatusProgressbar";
-            this.convertionStatusProgressbar.Size = new System.Drawing.Size(448, 15);
+            this.convertionStatusProgressbar.Size = new System.Drawing.Size(454, 15);
             this.convertionStatusProgressbar.TabIndex = 24;
             // 
             // label2
@@ -307,14 +338,28 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Conversion Status:";
             // 
-            // imagePanel
+            // downloadVideosPanel
             // 
-            this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
-            this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imagePanel.Location = new System.Drawing.Point(311, 0);
-            this.imagePanel.Name = "imagePanel";
-            this.imagePanel.Size = new System.Drawing.Size(133, 54);
-            this.imagePanel.TabIndex = 25;
+            this.downloadVideosPanel.BackgroundImage = global::FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_1201;
+            this.downloadVideosPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.downloadVideosPanel.Controls.Add(this.downloadVideosLabel);
+            this.downloadVideosPanel.Location = new System.Drawing.Point(0, 311);
+            this.downloadVideosPanel.Name = "downloadVideosPanel";
+            this.downloadVideosPanel.Size = new System.Drawing.Size(467, 29);
+            this.downloadVideosPanel.TabIndex = 25;
+            this.downloadVideosPanel.Click += new System.EventHandler(this.downloadVideosButton_Click);
+            // 
+            // downloadVideosLabel
+            // 
+            this.downloadVideosLabel.AutoSize = true;
+            this.downloadVideosLabel.BackColor = System.Drawing.Color.Transparent;
+            this.downloadVideosLabel.ForeColor = System.Drawing.Color.Aqua;
+            this.downloadVideosLabel.Location = new System.Drawing.Point(155, 8);
+            this.downloadVideosLabel.Name = "downloadVideosLabel";
+            this.downloadVideosLabel.Size = new System.Drawing.Size(136, 13);
+            this.downloadVideosLabel.TabIndex = 0;
+            this.downloadVideosLabel.Text = "Download Checked Videos";
+            this.downloadVideosLabel.Click += new System.EventHandler(this.downloadVideosButton_Click);
             // 
             // label4
             // 
@@ -328,16 +373,39 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Fairy ";
             // 
+            // imagePanel
+            // 
+            this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
+            this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imagePanel.Location = new System.Drawing.Point(311, 0);
+            this.imagePanel.Name = "imagePanel";
+            this.imagePanel.Size = new System.Drawing.Size(133, 54);
+            this.imagePanel.TabIndex = 25;
+            // 
+            // downloadVideosButton
+            // 
+            this.downloadVideosButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.downloadVideosButton.ForeColor = System.Drawing.Color.White;
+            this.downloadVideosButton.Location = new System.Drawing.Point(521, 241);
+            this.downloadVideosButton.Name = "downloadVideosButton";
+            this.downloadVideosButton.Size = new System.Drawing.Size(448, 23);
+            this.downloadVideosButton.TabIndex = 17;
+            this.downloadVideosButton.Text = "Download Videos";
+            this.downloadVideosButton.UseVisualStyleBackColor = false;
+            this.downloadVideosButton.Click += new System.EventHandler(this.downloadVideosButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(484, 603);
+            this.ClientSize = new System.Drawing.Size(485, 603);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.downloadVideosButton);
+            this.Controls.Add(this.loadSongsButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Fairy Downloader";
@@ -345,6 +413,10 @@
             this.optionsPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            this.loadLinkPanel.ResumeLayout(false);
+            this.loadLinkPanel.PerformLayout();
+            this.downloadVideosPanel.ResumeLayout(false);
+            this.downloadVideosPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,7 +438,6 @@
         private System.Windows.Forms.Button pathSelectorButton;
         private System.Windows.Forms.CheckedListBox songTitlesList;
         private System.Windows.Forms.CheckBox selectAllCheckbox;
-        private System.Windows.Forms.Button downloadVideosButton;
         private System.Windows.Forms.ProgressBar downloadStatusProgressbar;
         private System.Windows.Forms.Label downloadStatusLabel;
         private System.Windows.Forms.ComboBox cboResolution;
@@ -377,6 +448,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel imagePanel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel downloadVideosPanel;
+        private System.Windows.Forms.Label downloadVideosLabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel loadLinkPanel;
+        private System.Windows.Forms.Label loadLinkLabel;
+        private System.Windows.Forms.Button downloadVideosButton;
     }
 }
 

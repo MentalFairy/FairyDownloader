@@ -55,7 +55,9 @@ namespace FairyFileRenamerProject
             loadSongsButton.Text = "Loading Titles, please wait...";
             loadSongsButton.Enabled = false;
             loadSongsButton.BackColor = Color.FromArgb(255, 70, 0, 0);
-  
+            loadLinkPanel.BackgroundImage = new Bitmap(FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_70);
+            loadLinkLabel.Text = "Loading Titles, please wait...";
+
         }
         private void titlesWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -82,6 +84,9 @@ namespace FairyFileRenamerProject
             loadSongsButton.Text = "Load Link and Display Song Titles";
             loadSongsButton.Enabled = true;
             loadSongsButton.BackColor = Color.FromArgb(255, 120, 0, 0);
+            loadLinkPanel.BackgroundImage = new Bitmap(FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_1201);
+            loadLinkLabel.Text = "Load Link - Display Song Titles";
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -131,6 +136,9 @@ namespace FairyFileRenamerProject
             downloadVideosButton.Text = "Videos are downloading...";
             downloadVideosButton.Enabled = false;
             downloadVideosButton.BackColor = Color.FromArgb(255, 70, 0, 0);
+
+            downloadVideosPanel.BackgroundImage = new Bitmap(FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_70);
+            downloadVideosLabel.Text = "Videos are downloading...";
 
             dlManager.RunWorkerAsync();
          
@@ -190,6 +198,9 @@ namespace FairyFileRenamerProject
             downloadVideosButton.Text = "Download Videos";
             downloadVideosButton.Enabled = true;
             downloadVideosButton.BackColor = Color.FromArgb(255, 120, 0, 0);
+            downloadVideosPanel.BackgroundImage = new Bitmap(FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_1201);
+
+            downloadVideosLabel.Text = "Download checked Videos";
         }
 
         private void dontRenameCheckbox_CheckedChanged(object sender, EventArgs e)
