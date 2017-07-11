@@ -70,9 +70,10 @@
             this.downloadLinkTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.downloadLinkTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.downloadLinkTextBox.ForeColor = System.Drawing.Color.Cyan;
-            this.downloadLinkTextBox.Location = new System.Drawing.Point(110, 8);
+            this.downloadLinkTextBox.Location = new System.Drawing.Point(220, 15);
+            this.downloadLinkTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.downloadLinkTextBox.Name = "downloadLinkTextBox";
-            this.downloadLinkTextBox.Size = new System.Drawing.Size(349, 20);
+            this.downloadLinkTextBox.Size = new System.Drawing.Size(694, 31);
             this.downloadLinkTextBox.TabIndex = 0;
             // 
             // titleLabel
@@ -81,9 +82,10 @@
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.Maroon;
-            this.titleLabel.Location = new System.Drawing.Point(126, 18);
+            this.titleLabel.Location = new System.Drawing.Point(252, 35);
+            this.titleLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(159, 36);
+            this.titleLabel.Size = new System.Drawing.Size(333, 73);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "Downloader";
             // 
@@ -91,9 +93,10 @@
             // 
             this.downloadLinkLabel.AutoSize = true;
             this.downloadLinkLabel.ForeColor = System.Drawing.Color.White;
-            this.downloadLinkLabel.Location = new System.Drawing.Point(8, 11);
+            this.downloadLinkLabel.Location = new System.Drawing.Point(16, 21);
+            this.downloadLinkLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.downloadLinkLabel.Name = "downloadLinkLabel";
-            this.downloadLinkLabel.Size = new System.Drawing.Size(81, 13);
+            this.downloadLinkLabel.Size = new System.Drawing.Size(159, 25);
             this.downloadLinkLabel.TabIndex = 2;
             this.downloadLinkLabel.Text = "Download Link:";
             // 
@@ -101,9 +104,10 @@
             // 
             this.destinationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.destinationTextBox.ForeColor = System.Drawing.Color.Cyan;
-            this.destinationTextBox.Location = new System.Drawing.Point(110, 39);
+            this.destinationTextBox.Location = new System.Drawing.Point(220, 75);
+            this.destinationTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.destinationTextBox.Name = "destinationTextBox";
-            this.destinationTextBox.Size = new System.Drawing.Size(308, 20);
+            this.destinationTextBox.Size = new System.Drawing.Size(612, 31);
             this.destinationTextBox.TabIndex = 3;
             this.destinationTextBox.Text = "C:\\Users\\FairyMental\\Desktop\\DownloadTest";
             // 
@@ -111,9 +115,10 @@
             // 
             this.destinationLabel.AutoSize = true;
             this.destinationLabel.ForeColor = System.Drawing.Color.White;
-            this.destinationLabel.Location = new System.Drawing.Point(8, 46);
+            this.destinationLabel.Location = new System.Drawing.Point(16, 88);
+            this.destinationLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.destinationLabel.Name = "destinationLabel";
-            this.destinationLabel.Size = new System.Drawing.Size(88, 13);
+            this.destinationLabel.Size = new System.Drawing.Size(176, 25);
             this.destinationLabel.TabIndex = 4;
             this.destinationLabel.Text = "Destination Path:";
             // 
@@ -121,9 +126,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 103);
+            this.label1.Location = new System.Drawing.Point(16, 198);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(120, 25);
             this.label1.TabIndex = 7;
             this.label1.Text = "Song Titles";
             // 
@@ -132,9 +138,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 14);
+            this.label3.Location = new System.Drawing.Point(6, 27);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 20);
+            this.label3.Size = new System.Drawing.Size(135, 37);
             this.label3.TabIndex = 9;
             this.label3.Text = "Options";
             // 
@@ -142,9 +149,10 @@
             // 
             this.dontRenameCheckbox.AutoSize = true;
             this.dontRenameCheckbox.ForeColor = System.Drawing.Color.White;
-            this.dontRenameCheckbox.Location = new System.Drawing.Point(8, 46);
+            this.dontRenameCheckbox.Location = new System.Drawing.Point(16, 88);
+            this.dontRenameCheckbox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dontRenameCheckbox.Name = "dontRenameCheckbox";
-            this.dontRenameCheckbox.Size = new System.Drawing.Size(94, 17);
+            this.dontRenameCheckbox.Size = new System.Drawing.Size(179, 29);
             this.dontRenameCheckbox.TabIndex = 11;
             this.dontRenameCheckbox.Text = "Don\'t Rename";
             this.dontRenameCheckbox.UseVisualStyleBackColor = true;
@@ -154,9 +162,10 @@
             // 
             this.dontDeleteVideoCheckbox.AutoSize = true;
             this.dontDeleteVideoCheckbox.ForeColor = System.Drawing.Color.White;
-            this.dontDeleteVideoCheckbox.Location = new System.Drawing.Point(8, 69);
+            this.dontDeleteVideoCheckbox.Location = new System.Drawing.Point(16, 133);
+            this.dontDeleteVideoCheckbox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dontDeleteVideoCheckbox.Name = "dontDeleteVideoCheckbox";
-            this.dontDeleteVideoCheckbox.Size = new System.Drawing.Size(139, 17);
+            this.dontDeleteVideoCheckbox.Size = new System.Drawing.Size(274, 29);
             this.dontDeleteVideoCheckbox.TabIndex = 12;
             this.dontDeleteVideoCheckbox.Text = "Don\'t Delete Video Files";
             this.dontDeleteVideoCheckbox.UseVisualStyleBackColor = true;
@@ -166,9 +175,10 @@
             // 
             this.loadSongsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.loadSongsButton.ForeColor = System.Drawing.Color.White;
-            this.loadSongsButton.Location = new System.Drawing.Point(521, 212);
+            this.loadSongsButton.Location = new System.Drawing.Point(1042, 408);
+            this.loadSongsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.loadSongsButton.Name = "loadSongsButton";
-            this.loadSongsButton.Size = new System.Drawing.Size(448, 23);
+            this.loadSongsButton.Size = new System.Drawing.Size(896, 44);
             this.loadSongsButton.TabIndex = 13;
             this.loadSongsButton.Text = "Load Link and Display Song Titles";
             this.loadSongsButton.UseVisualStyleBackColor = false;
@@ -179,9 +189,10 @@
             this.pathSelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pathSelectorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pathSelectorButton.ForeColor = System.Drawing.Color.White;
-            this.pathSelectorButton.Location = new System.Drawing.Point(424, 39);
+            this.pathSelectorButton.Location = new System.Drawing.Point(848, 75);
+            this.pathSelectorButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pathSelectorButton.Name = "pathSelectorButton";
-            this.pathSelectorButton.Size = new System.Drawing.Size(35, 20);
+            this.pathSelectorButton.Size = new System.Drawing.Size(70, 38);
             this.pathSelectorButton.TabIndex = 14;
             this.pathSelectorButton.UseVisualStyleBackColor = false;
             this.pathSelectorButton.Click += new System.EventHandler(this.button1_Click);
@@ -192,9 +203,10 @@
             this.songTitlesList.CheckOnClick = true;
             this.songTitlesList.ForeColor = System.Drawing.Color.Cyan;
             this.songTitlesList.FormattingEnabled = true;
-            this.songTitlesList.Location = new System.Drawing.Point(5, 122);
+            this.songTitlesList.Location = new System.Drawing.Point(10, 235);
+            this.songTitlesList.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.songTitlesList.Name = "songTitlesList";
-            this.songTitlesList.Size = new System.Drawing.Size(454, 154);
+            this.songTitlesList.Size = new System.Drawing.Size(904, 290);
             this.songTitlesList.TabIndex = 15;
             this.songTitlesList.Click += new System.EventHandler(this.loadSongsButton_Click);
             // 
@@ -202,9 +214,10 @@
             // 
             this.selectAllCheckbox.AutoSize = true;
             this.selectAllCheckbox.ForeColor = System.Drawing.Color.White;
-            this.selectAllCheckbox.Location = new System.Drawing.Point(381, 99);
+            this.selectAllCheckbox.Location = new System.Drawing.Point(762, 190);
+            this.selectAllCheckbox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.selectAllCheckbox.Name = "selectAllCheckbox";
-            this.selectAllCheckbox.Size = new System.Drawing.Size(70, 17);
+            this.selectAllCheckbox.Size = new System.Drawing.Size(134, 29);
             this.selectAllCheckbox.TabIndex = 16;
             this.selectAllCheckbox.Text = "Select All";
             this.selectAllCheckbox.UseVisualStyleBackColor = true;
@@ -212,18 +225,20 @@
             // 
             // downloadStatusProgressbar
             // 
-            this.downloadStatusProgressbar.Location = new System.Drawing.Point(5, 359);
+            this.downloadStatusProgressbar.Location = new System.Drawing.Point(10, 690);
+            this.downloadStatusProgressbar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.downloadStatusProgressbar.Name = "downloadStatusProgressbar";
-            this.downloadStatusProgressbar.Size = new System.Drawing.Size(454, 15);
+            this.downloadStatusProgressbar.Size = new System.Drawing.Size(908, 29);
             this.downloadStatusProgressbar.TabIndex = 18;
             // 
             // downloadStatusLabel
             // 
             this.downloadStatusLabel.AutoSize = true;
             this.downloadStatusLabel.ForeColor = System.Drawing.Color.White;
-            this.downloadStatusLabel.Location = new System.Drawing.Point(5, 343);
+            this.downloadStatusLabel.Location = new System.Drawing.Point(10, 660);
+            this.downloadStatusLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.downloadStatusLabel.Name = "downloadStatusLabel";
-            this.downloadStatusLabel.Size = new System.Drawing.Size(94, 13);
+            this.downloadStatusLabel.Size = new System.Drawing.Size(186, 25);
             this.downloadStatusLabel.TabIndex = 19;
             this.downloadStatusLabel.Text = "Download Status: ";
             // 
@@ -235,18 +250,20 @@
             "360",
             "480",
             "720"});
-            this.cboResolution.Location = new System.Drawing.Point(386, 282);
+            this.cboResolution.Location = new System.Drawing.Point(772, 542);
+            this.cboResolution.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboResolution.Name = "cboResolution";
-            this.cboResolution.Size = new System.Drawing.Size(70, 21);
+            this.cboResolution.Size = new System.Drawing.Size(136, 33);
             this.cboResolution.TabIndex = 20;
             // 
             // dontConvertCheckbox
             // 
             this.dontConvertCheckbox.AutoSize = true;
             this.dontConvertCheckbox.ForeColor = System.Drawing.Color.White;
-            this.dontConvertCheckbox.Location = new System.Drawing.Point(8, 92);
+            this.dontConvertCheckbox.Location = new System.Drawing.Point(16, 177);
+            this.dontConvertCheckbox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dontConvertCheckbox.Name = "dontConvertCheckbox";
-            this.dontConvertCheckbox.Size = new System.Drawing.Size(126, 17);
+            this.dontConvertCheckbox.Size = new System.Drawing.Size(245, 29);
             this.dontConvertCheckbox.TabIndex = 21;
             this.dontConvertCheckbox.Text = "Don\'t Convert to mp3";
             this.dontConvertCheckbox.UseVisualStyleBackColor = true;
@@ -258,9 +275,10 @@
             this.optionsPanel.Controls.Add(this.dontConvertCheckbox);
             this.optionsPanel.Controls.Add(this.dontRenameCheckbox);
             this.optionsPanel.Controls.Add(this.dontDeleteVideoCheckbox);
-            this.optionsPanel.Location = new System.Drawing.Point(3, 419);
+            this.optionsPanel.Location = new System.Drawing.Point(6, 806);
+            this.optionsPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.optionsPanel.Name = "optionsPanel";
-            this.optionsPanel.Size = new System.Drawing.Size(200, 112);
+            this.optionsPanel.Size = new System.Drawing.Size(400, 215);
             this.optionsPanel.TabIndex = 22;
             // 
             // mainPanel
@@ -282,9 +300,10 @@
             this.mainPanel.Controls.Add(this.label1);
             this.mainPanel.Controls.Add(this.downloadVideosPanel);
             this.mainPanel.Controls.Add(this.pathSelectorButton);
-            this.mainPanel.Location = new System.Drawing.Point(9, 60);
+            this.mainPanel.Location = new System.Drawing.Point(18, 115);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(470, 534);
+            this.mainPanel.Size = new System.Drawing.Size(940, 1027);
             this.mainPanel.TabIndex = 23;
             // 
             // label7
@@ -292,20 +311,23 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label7.ForeColor = System.Drawing.Color.Aqua;
-            this.label7.Location = new System.Drawing.Point(429, 42);
+            this.label7.Location = new System.Drawing.Point(866, 81);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(22, 13);
+            this.label7.Size = new System.Drawing.Size(42, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = ". . .";
+            this.label7.Click += new System.EventHandler(this.button1_Click);
             // 
             // loadLinkPanel
             // 
             this.loadLinkPanel.BackgroundImage = global::FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_1201;
             this.loadLinkPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadLinkPanel.Controls.Add(this.loadLinkLabel);
-            this.loadLinkPanel.Location = new System.Drawing.Point(0, 64);
+            this.loadLinkPanel.Location = new System.Drawing.Point(0, 123);
+            this.loadLinkPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.loadLinkPanel.Name = "loadLinkPanel";
-            this.loadLinkPanel.Size = new System.Drawing.Size(470, 29);
+            this.loadLinkPanel.Size = new System.Drawing.Size(940, 56);
             this.loadLinkPanel.TabIndex = 26;
             this.loadLinkPanel.Click += new System.EventHandler(this.loadSongsButton_Click);
             // 
@@ -314,27 +336,30 @@
             this.loadLinkLabel.AutoSize = true;
             this.loadLinkLabel.BackColor = System.Drawing.Color.Transparent;
             this.loadLinkLabel.ForeColor = System.Drawing.Color.Aqua;
-            this.loadLinkLabel.Location = new System.Drawing.Point(150, 7);
+            this.loadLinkLabel.Location = new System.Drawing.Point(300, 13);
+            this.loadLinkLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.loadLinkLabel.Name = "loadLinkLabel";
-            this.loadLinkLabel.Size = new System.Drawing.Size(155, 13);
+            this.loadLinkLabel.Size = new System.Drawing.Size(315, 25);
             this.loadLinkLabel.TabIndex = 0;
             this.loadLinkLabel.Text = "Load Link - Dispaly Video Titles";
             this.loadLinkLabel.Click += new System.EventHandler(this.loadSongsButton_Click);
             // 
             // convertionStatusProgressbar
             // 
-            this.convertionStatusProgressbar.Location = new System.Drawing.Point(5, 393);
+            this.convertionStatusProgressbar.Location = new System.Drawing.Point(10, 756);
+            this.convertionStatusProgressbar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.convertionStatusProgressbar.Name = "convertionStatusProgressbar";
-            this.convertionStatusProgressbar.Size = new System.Drawing.Size(454, 15);
+            this.convertionStatusProgressbar.Size = new System.Drawing.Size(908, 29);
             this.convertionStatusProgressbar.TabIndex = 24;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(5, 377);
+            this.label2.Location = new System.Drawing.Point(10, 725);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.Size = new System.Drawing.Size(194, 25);
             this.label2.TabIndex = 23;
             this.label2.Text = "Conversion Status:";
             // 
@@ -343,9 +368,10 @@
             this.downloadVideosPanel.BackgroundImage = global::FairyFileRenamerProject.Properties.Resources.VisualStudioRedButton_1201;
             this.downloadVideosPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.downloadVideosPanel.Controls.Add(this.downloadVideosLabel);
-            this.downloadVideosPanel.Location = new System.Drawing.Point(0, 311);
+            this.downloadVideosPanel.Location = new System.Drawing.Point(0, 598);
+            this.downloadVideosPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.downloadVideosPanel.Name = "downloadVideosPanel";
-            this.downloadVideosPanel.Size = new System.Drawing.Size(467, 29);
+            this.downloadVideosPanel.Size = new System.Drawing.Size(934, 56);
             this.downloadVideosPanel.TabIndex = 25;
             this.downloadVideosPanel.Click += new System.EventHandler(this.downloadVideosButton_Click);
             // 
@@ -354,9 +380,10 @@
             this.downloadVideosLabel.AutoSize = true;
             this.downloadVideosLabel.BackColor = System.Drawing.Color.Transparent;
             this.downloadVideosLabel.ForeColor = System.Drawing.Color.Aqua;
-            this.downloadVideosLabel.Location = new System.Drawing.Point(155, 8);
+            this.downloadVideosLabel.Location = new System.Drawing.Point(310, 15);
+            this.downloadVideosLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.downloadVideosLabel.Name = "downloadVideosLabel";
-            this.downloadVideosLabel.Size = new System.Drawing.Size(136, 13);
+            this.downloadVideosLabel.Size = new System.Drawing.Size(270, 25);
             this.downloadVideosLabel.TabIndex = 0;
             this.downloadVideosLabel.Text = "Download Checked Videos";
             this.downloadVideosLabel.Click += new System.EventHandler(this.downloadVideosButton_Click);
@@ -367,9 +394,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(55, 18);
+            this.label4.Location = new System.Drawing.Point(110, 35);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 36);
+            this.label4.Size = new System.Drawing.Size(169, 73);
             this.label4.TabIndex = 26;
             this.label4.Text = "Fairy ";
             // 
@@ -377,18 +405,20 @@
             // 
             this.imagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagePanel.BackgroundImage")));
             this.imagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imagePanel.Location = new System.Drawing.Point(311, 0);
+            this.imagePanel.Location = new System.Drawing.Point(622, 0);
+            this.imagePanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.imagePanel.Name = "imagePanel";
-            this.imagePanel.Size = new System.Drawing.Size(133, 54);
+            this.imagePanel.Size = new System.Drawing.Size(266, 104);
             this.imagePanel.TabIndex = 25;
             // 
             // downloadVideosButton
             // 
             this.downloadVideosButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.downloadVideosButton.ForeColor = System.Drawing.Color.White;
-            this.downloadVideosButton.Location = new System.Drawing.Point(521, 241);
+            this.downloadVideosButton.Location = new System.Drawing.Point(1042, 463);
+            this.downloadVideosButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.downloadVideosButton.Name = "downloadVideosButton";
-            this.downloadVideosButton.Size = new System.Drawing.Size(448, 23);
+            this.downloadVideosButton.Size = new System.Drawing.Size(896, 44);
             this.downloadVideosButton.TabIndex = 17;
             this.downloadVideosButton.Text = "Download Videos";
             this.downloadVideosButton.UseVisualStyleBackColor = false;
@@ -396,10 +426,10 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(485, 603);
+            this.ClientSize = new System.Drawing.Size(970, 1160);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.imagePanel);
@@ -407,6 +437,7 @@
             this.Controls.Add(this.downloadVideosButton);
             this.Controls.Add(this.loadSongsButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "MainForm";
             this.Text = "Fairy Downloader";
             this.optionsPanel.ResumeLayout(false);
